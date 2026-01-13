@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </nav>
+
+    <h1>Contact Page</h1>
+    <p>This is the Contact page.</p>
+
+    <!-- Display your image -->
+    <img src="{{ url_for('static', filename='images/lucas-law-ecELcxmJTk4-unsplash.jpg') }}" alt="Contact Image" width="400">
+
+    <!-- Contact form -->
+    <form action="/contact" method="POST">
+        <p><input type="text" name="name" placeholder="Your Name" required></p>
+        <p><input type="email" name="email" placeholder="Your Email" required></p>
+        <p><textarea name="message" placeholder="Your Message" required></textarea></p>
+        <p><button type="submit">Send</button></p>
+    </form>
+</body>
+</html>

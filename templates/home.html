@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </nav>
+
+    <h1>Welcome to the Home Page!</h1>
+    
+    <!-- Display your image -->
+    <img src="{{ url_for('static', filename='images/lucas-law-ecELcxmJTk4-unsplash.jpg') }}" alt="Home Image" width="400">
+</body>
+</html>

@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #8a64e1;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #3a5fe7;
+    padding: 10px;
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin-top: 50px;
+}
+/* Make images larger and centered */
+img {
+    display: block;          /* centers the image */
+    margin: 20px auto;       /* auto horizontal margin */
+    max-width: 90%;          /* image takes up to 90% of page width */
+    height: auto;            /* keep original aspect ratio */
+    border-radius: 10px;     /* optional: rounded corners */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* optional: shadow */
+}
