@@ -37,7 +37,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 300px;
+    width: 320px;
     background: white;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -45,11 +45,19 @@
     font-family: Arial;
 ">
     <div style="background:#003366;color:white;padding:10px;">
-        College Chatbot
+        Pavdav College Chatbot
     </div>
 
-    <div id="chatBox" style="height:200px;overflow-y:auto;padding:10px;">
-        <p><b>Bot:</b> Hi! I am your chatbot. Say hello 👋</p>
+    <div id="chatBox" style="height:220px;overflow-y:auto;padding:10px;">
+        <p><b>Bot:</b> 👋 Hello! Welcome to Pavdav College.<br><br>
+        I can help you with:
+        <br>• Admission process
+        <br>• Fees structure
+        <br>• Polytechnic branches
+        <br>• Seat availability
+        <br><br>
+        Try typing: <b>admission</b>, <b>fees</b>, <b>branches</b>, or <b>seats</b>.
+        </p>
     </div>
 
     <div style="display:flex;">
@@ -84,15 +92,13 @@ function sendMessage() {
         chatBox.innerHTML += "<p><b>Bot:</b> " + data.reply + "</p>";
         chatBox.scrollTop = chatBox.scrollHeight;
     })
-    .catch(err => {
+    .catch(() => {
         chatBox.innerHTML += "<p><b>Bot:</b> Server error ❌</p>";
-        console.error(err);
     });
 
     input.value = "";
 }
 </script>
-
 
 </body>
 </html>
