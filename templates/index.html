@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pavdav College - About</title>
+    <title>Pavdav College - Home</title>
     <style>
         /* Basic Reset */
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -72,12 +72,11 @@
 </header>
 
 <main>
-    <h2>About Pavdav College</h2>
-    <p>Welcome to Pavdav College. Here you can add information about your college, history, mission, and vision.</p>
+    <h2>Welcome to Pavdav College</h2>
+    <p>This is the homepage content. You can add more info, images, and announcements.</p>
 
-    <!-- Example image -->
     <img src="{{ url_for('static', filename='images/lucas-law-ecELcxmJTk4-unsplash.jpg') }}" 
-         alt="About Pavdav College">
+         alt="Beautiful Image">
 </main>
 
 <!-- Floating Chatbot Button -->
@@ -96,12 +95,13 @@
 
 <script src="/static/script.js"></script>
 <script>
+    // Toggle chatbox on button click
     const chatButton = document.getElementById("chatButton");
     const chatContainer = document.getElementById("chatContainer");
+
     chatButton.addEventListener("click", () => {
         chatContainer.style.display = chatContainer.style.display === "flex" ? "none" : "flex";
     });
 </script>
-
 </body>
 </html>

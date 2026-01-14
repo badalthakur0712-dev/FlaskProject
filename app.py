@@ -1,20 +1,34 @@
-from flask import Flask, render_template
-import os
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
+# Homepage
+@app.route("/")
 def home():
-    return render_template('home.html')
+    return render_template("index.html")
 
-@app.route('/about')
+# About page
+@app.route("/about")
 def about():
-    return render_template('about.html')
+    return render_template("about.html")
 
-@app.route('/contact')
+# Contact page
+@app.route("/contact")
 def contact():
-    return render_template('contact.html')
+    return render_template("contact.html")
+
+# Chatbot response
+@app.route("/get_response", methods=["POST"])
+def get_response():
+    user_message = request.json.get("message")
+    if "hello" in user_message.lower():
+        bot_message = "Hello! How can I help you?"
+    elif "how are you" in user_message.lower():
+        bot_message = "I'm good, thanks! What about you?"
+    else:
+        bot_message = f"You said: {user_message}"
+    return jsonify({"response": bot_message})
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=5000)
+
