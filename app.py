@@ -7,30 +7,26 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/about")
-def about():
-    return "<h1>About Pavdav College</h1><p>Quality education and innovation.</p>"
-
-@app.route("/contact")
-def contact():
-    return "<h1>Contact Us</h1><p>Email: pavdavcollege@gmail.com</p>"
-
 @app.route("/chat", methods=["POST"])
 def chat():
-    user_message = request.json.get("message", "").lower()
+    data = request.get_json()
+    if not data or "message" not in data:
+        return jsonify({"reply": "No message received"}), 400
 
-    if "hello" in user_message:
+    user_message = data["message"].lower()
+
+    if "hello" in user_message or "hi" in user_message:
         reply = "Hello 👋 How can I help you?"
     elif "admission" in user_message:
-        reply = "Admissions are open. Visit the college office or apply online."
+        reply = "Admissions are open. Please visit the college office."
     elif "fees" in user_message:
-        reply = "Fees depend on the branch. Average range is ₹30,000–₹80,000 per year."
+        reply = "Fees range from ₹30,000 to ₹80,000 per year."
     elif "branch" in user_message:
-        reply = "Available branches: Computer Science, IT, Mechanical, Civil."
+        reply = "Available branches: Computer, IT, Mechanical, Civil."
     elif "seat" in user_message:
-        reply = "Limited seats available. Please apply early."
+        reply = "Limited seats available. Apply early."
     else:
-        reply = "Sorry, I didn’t understand. Ask about admission, fees, branches, or seats."
+        reply = "Please ask about admission, fees, branches, or seats."
 
     return jsonify({"reply": reply})
 
