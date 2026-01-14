@@ -32,5 +32,62 @@
     © 2026 Pavdav College. All rights reserved.
 </footer>
 
+<!-- CHATBOT -->
+<div style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    font-family: Arial;
+">
+    <div style="background:#003366;color:white;padding:10px;">
+        College Chatbot
+    </div>
+
+    <div id="chatBox" style="height:200px;overflow-y:auto;padding:10px;">
+        <p><b>Bot:</b> Hi! I am your chatbot. Say hello 👋</p>
+    </div>
+
+    <div style="display:flex;">
+        <input type="text" id="userInput" placeholder="Type message..."
+               style="flex:1;padding:8px;border:none;border-top:1px solid #ccc;">
+        <button onclick="sendMessage()"
+                style="padding:8px;background:#003366;color:white;border:none;">
+            Send
+        </button>
+    </div>
+</div>
+
+<script>
+function sendMessage() {
+    let input = document.getElementById("userInput");
+    let message = input.value;
+
+    if (message.trim() === "") return;
+
+    let chatBox = document.getElementById("chatBox");
+    chatBox.innerHTML += "<p><b>You:</b> " + message + "</p>";
+
+    fetch("/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: message })
+    })
+    .then(response => response.json())
+    .then(data => {
+        chatBox.innerHTML += "<p><b>Bot:</b> " + data.reply + "</p>";
+        chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    input.value = "";
+}
+</script>
+
 </body>
 </html>
