@@ -1,109 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Pavdav College - Contact</title>
-    <style>
-        /* Basic Reset */
-        * { margin:0; padding:0; box-sizing:border-box; }
-
-        body { font-family: Arial, sans-serif; background:#f4f4f4; }
-
-        /* Header & Navbar */
-        header { background:#2c3e50; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; color:white; }
-        header h1 { font-size:24px; }
-        nav a { color:white; text-decoration:none; margin-left:20px; font-weight:bold; transition:0.3s; }
-        nav a:hover { color:#1abc9c; }
-
-        main { padding:30px; max-width:900px; margin:0 auto; }
-
-        main img { display:block; margin:20px 0; max-width:100%; border-radius:10px; }
-
-        /* Chatbot Button */
-        #chatButton {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background:#1abc9c;
-            color:white;
-            border:none;
-            border-radius:50%;
-            width:60px;
-            height:60px;
-            font-size:24px;
-            cursor:pointer;
-            box-shadow:0 4px 6px rgba(0,0,0,0.3);
-            transition:0.3s;
-        }
-        #chatButton:hover { background:#16a085; }
-
-        /* Chatbox */
-        #chatContainer {
-            display:none;
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width:300px;
-            max-height:400px;
-            background:white;
-            border-radius:10px;
-            box-shadow:0 4px 6px rgba(0,0,0,0.3);
-            overflow:hidden;
-            display:flex;
-            flex-direction:column;
-        }
-
-        #chatbox { flex:1; padding:10px; overflow-y:auto; }
-        #chatInput { display:flex; border-top:1px solid #ccc; }
-        #userInput { flex:1; padding:8px; border:none; outline:none; }
-        #sendBtn { background:#1abc9c; border:none; color:white; padding:8px 12px; cursor:pointer; }
-        #sendBtn:hover { background:#16a085; }
-    </style>
+    <title>Contact – Pavdav College</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<header>
-    <h1>Pavdav College</h1>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-    </nav>
-</header>
+<nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+</nav>
 
-<main>
-    <h2>Contact Pavdav College</h2>
-    <p>Email: info@pavdavcollege.com</p>
-    <p>Phone: 123-456-7890</p>
+<div class="container">
+    <h1>Contact Us</h1>
 
-    <!-- Example image -->
-    <img src="{{ url_for('static', filename='images/lucas-law-ecELcxmJTk4-unsplash.jpg') }}" 
-         alt="Contact Pavdav College">
-</main>
-
-<!-- Floating Chatbot Button -->
-<button id="chatButton">💬</button>
-
-<!-- Chatbox Container -->
-<div id="chatContainer">
-    <div id="chatbox">
-        <div><b>Bot:</b> Hi! I am your chatbot. Say hello!</div>
-    </div>
-    <div id="chatInput">
-        <input type="text" id="userInput" placeholder="Type a message...">
-        <button id="sendBtn" onclick="sendMessage()">Send</button>
-    </div>
+    <p><b>College Name:</b> Pavdav College</p>
+    <p><b>Email:</b> pavdavcollege@gmail.com</p>
+    <p><b>Phone:</b> +91 98765 43210</p>
+    <p><b>Address:</b> India</p>
 </div>
 
-<script src="/static/script.js"></script>
-<script>
-    const chatButton = document.getElementById("chatButton");
-    const chatContainer = document.getElementById("chatContainer");
-    chatButton.addEventListener("click", () => {
-        chatContainer.style.display = chatContainer.style.display === "flex" ? "none" : "flex";
-    });
-</script>
+<footer>
+    © 2026 Pavdav College. All rights reserved.
+</footer>
 
 </body>
 </html>
-
