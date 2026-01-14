@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>About – Pavdav College</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>About - Pandav College</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { margin:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color:#f4f4f4; }
+        header { background-color:#2c3e50; color:white; padding:20px 0; text-align:center; }
+        nav { text-align:center; background-color:#34495e; }
+        nav a { margin:0 15px; text-decoration:none; color:white; font-weight:bold; padding:12px 20px; display:inline-block; }
+        nav a:hover { background-color:#2980b9; border-radius:5px; }
+        section { max-width:900px; margin:50px auto; text-align:center; }
+        h2 { color:#2c3e50; font-size:36px; margin-bottom:20px; }
+        p { font-size:18px; line-height:1.8; }
+        footer { background-color:#2c3e50; color:white; text-align:center; padding:15px 0; margin-top:50px; }
+    </style>
 </head>
 <body>
+    <header>
+        <h2>Pandav College</h2>
+    </header>
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-</nav>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/chat">Chatbot</a>
+        <a href="/admin-login">Admin</a>
+    </nav>
 
-<div class="container">
-    <h1>About Pavdav College</h1>
-    <p>
-        Pavdav College was established with the vision of providing
-        quality education and shaping the future of students through
-        academic excellence, discipline, and innovation.
-    </p>
+    <section>
+        <h2>About Pandav College</h2>
+        <p>Pandav College is dedicated to providing quality education and a friendly environment for students. Our mission is to empower students with knowledge and practical skills for a successful future. Explore our chatbot to get instant answers to common queries about courses, fees, and admissions.</p>
+    </section>
 
-    <p>
-        Our institution offers well-structured courses, experienced
-        faculty, and a supportive learning environment.
-    </p>
-</div>
-
-<footer>
-    © 2026 Pavdav College. All rights reserved.
-</footer>
-
+    <footer>
+        &copy; 2026 Pandav College. All rights reserved.
+    </footer>
 </body>
 </html>

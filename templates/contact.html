@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact – Pavdav College</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Contact - Pandav College</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { margin:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color:#f4f4f4; }
+        header { background-color:#2c3e50; color:white; padding:20px 0; text-align:center; }
+        nav { text-align:center; background-color:#34495e; }
+        nav a { margin:0 15px; text-decoration:none; color:white; font-weight:bold; padding:12px 20px; display:inline-block; }
+        nav a:hover { background-color:#2980b9; border-radius:5px; }
+        section { max-width:700px; margin:50px auto; text-align:center; }
+        h2 { color:#2c3e50; font-size:36px; margin-bottom:20px; }
+        p { font-size:18px; line-height:1.8; }
+        footer { background-color:#2c3e50; color:white; text-align:center; padding:15px 0; margin-top:50px; }
+    </style>
 </head>
 <body>
+    <header>
+        <h2>Pandav College</h2>
+    </header>
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-</nav>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/chat">Chatbot</a>
+        <a href="/admin-login">Admin</a>
+    </nav>
 
-<div class="container">
-    <h1>Contact Us</h1>
+    <section>
+        <h2>Contact Us</h2>
+        <p>Email: info@pandavcollege.edu</p>
+        <p>Phone: +91-1234567890</p>
+        <p>Address: Pandav College Campus, City, State, India</p>
+    </section>
 
-    <p><b>College Name:</b> Pavdav College</p>
-    <p><b>Email:</b> pavdavcollege@gmail.com</p>
-    <p><b>Phone:</b> +91 98765 43210</p>
-    <p><b>Address:</b> India</p>
-</div>
-
-<footer>
-    © 2026 Pavdav College. All rights reserved.
-</footer>
-
+    <footer>
+        &copy; 2026 Pandav College. All rights reserved.
+    </footer>
 </body>
 </html>

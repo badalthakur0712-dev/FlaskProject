@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Chatbot</title>
+    <title>My College Chatbot</title>
     <style>
-        body { font-family: Arial; }
-        #chatbox { width: 400px; height: 400px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; margin-bottom: 10px; }
-        #userInput { width: 300px; }
+        body { font-family: Arial, sans-serif; background-color: #e8f0fe; text-align: center; padding: 50px; }
+        h2 { color: #2c3e50; }
+        input[type=text] { padding: 10px; width: 300px; }
+        button { padding: 10px 20px; margin-left: 10px; background-color: #3498db; color: white; border: none; border-radius: 5px; }
+        button:hover { background-color: #2980b9; }
+        p { margin-top: 20px; font-size: 18px; }
+        a { display: inline-block; margin-top: 30px; color: #3498db; text-decoration: none; }
     </style>
 </head>
 <body>
-    <h2>Chatbot</h2>
-    <div id="chatbox"></div>
-    <input type="text" id="userInput" placeholder="Type your message">
-    <button onclick="sendMessage()">Send</button>
-
-    <script src="/static/script.js"></script>
+    <h2>My College Chatbot</h2>
+    <form method="POST">
+        <input type="text" name="question" placeholder="Enter your question" required>
+        <button type="submit">Ask</button>
+    </form>
+    <p><strong>Answer:</strong> {{ answer }}</p>
+    <a href="/">Back to Home</a> | <a href="/admin-login">Admin Login</a>
 </body>
 </html>
