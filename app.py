@@ -1,10 +1,27 @@
 from flask import Flask, render_template, request, jsonify
+import os
+
+# 1️⃣ Create the Flask app first
+app = Flask(__name__)
+
+# 2️⃣ Routes
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json(force=True)
     user_message = data.get("message", "").lower()
 
-    # Detailed responses
     if "hello" in user_message or "hi" in user_message:
         reply = "Hello 👋 Welcome to Pavdav College!"
     elif "admission" in user_message:
@@ -27,3 +44,8 @@ def chat():
                  "Try asking one of these.")
 
     return jsonify({"reply": reply})
+
+# 3️⃣ Run the app (for Render)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
