@@ -23,4 +23,17 @@ def chat():
     elif "branch" in user_message:
         reply = "Available branches: Computer, IT, Mechanical, Civil."
     elif "seat" in user_message:
+<<<<<<< HEAD
         reply
+=======
+        reply = "Limited seats available. Apply early."
+    else:
+        reply = "Please ask about admission, fees, branches, or seats."
+
+    return jsonify({"reply": reply})
+
+if __name__ == "__main__":
+    # Bind to 0.0.0.0 for Render + correct port
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+>>>>>>> e54b9f8 (Final fix chat route for Render)
