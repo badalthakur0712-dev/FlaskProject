@@ -1,42 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Contact - Pandav College</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { margin:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color:#f4f4f4; }
-        header { background-color:#2c3e50; color:white; padding:20px 0; text-align:center; }
-        nav { text-align:center; background-color:#34495e; }
-        nav a { margin:0 15px; text-decoration:none; color:white; font-weight:bold; padding:12px 20px; display:inline-block; }
-        nav a:hover { background-color:#2980b9; border-radius:5px; }
-        section { max-width:700px; margin:50px auto; text-align:center; }
-        h2 { color:#2c3e50; font-size:36px; margin-bottom:20px; }
-        p { font-size:18px; line-height:1.8; }
-        footer { background-color:#2c3e50; color:white; text-align:center; padding:15px 0; margin-top:50px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact</title>
+<style>
+body { font-family: Arial; background:#f5f5f5; margin:0; }
+header, footer { background:#007bff; color:#fff; padding:15px; text-align:center; }
+nav a { margin:0 15px; color:#fff; text-decoration:none; font-weight:bold; }
+.content { max-width:600px; margin:30px auto; background:#fff; padding:20px; border-radius:10px; }
+input, textarea { width:100%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; }
+button { padding:10px 15px; border:none; background:#007bff; color:#fff; border-radius:6px; cursor:pointer; }
+button:hover { background:#0056b3; }
+.success { color:green; }
+.error { color:red; }
+</style>
 </head>
 <body>
-    <header>
-        <h2>Pandav College</h2>
-    </header>
+<header>
+<nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/chat">Chat</a>
+    <a href="/admin-login">Admin</a>
+</nav>
+</header>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="/chat">Chatbot</a>
-        <a href="/admin-login">Admin</a>
-    </nav>
+<div class="content">
+<h2>Contact Us</h2>
+{% if message %}
+<p class="success">{{ message }}</p>
+{% endif %}
+<form method="POST" action="/contact">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+</form>
+</div>
 
-    <section>
-        <h2>Contact Us</h2>
-        <p>Email: info@pandavcollege.edu</p>
-        <p>Phone: +91-1234567890</p>
-        <p>Address: Pandav College Campus, City, State, India</p>
-    </section>
-
-    <footer>
-        &copy; 2026 Pandav College. All rights reserved.
-    </footer>
+<footer>
+&copy; 2026 Pandav College. All Rights Reserved.
+</footer>
 </body>
 </html>
