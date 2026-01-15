@@ -18,7 +18,6 @@ def init_db():
             os.remove(DB_NAME)
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
-    # Create contacts table
     c.execute("""
         CREATE TABLE IF NOT EXISTS contacts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,7 +26,6 @@ def init_db():
             message TEXT
         )
     """)
-    # Create chat history table
     c.execute("""
         CREATE TABLE IF NOT EXISTS chat_history (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,38 +41,36 @@ init_db()
 # FAQ answers
 faq_answers = {
     "Fees": "College fees range from ₹40,000 to ₹80,000 per year depending on the course.",
-    "Admission Process": """Step 1: Visit Pandav College campus or website to check available courses.
-Step 2: Fill the online/offline admission form with your details.
-Step 3: Pay the required fees (₹40,000 - ₹80,000 depending on the course).
-Step 4: Submit all necessary documents (ID, mark sheets, photos).
-Step 5: Once the documents and fees are verified, your admission will be confirmed.
-Step 6: You will receive an admission confirmation letter/email with further instructions.""",
-    "Seat Availability": """Seats vary according to branch:
-- Computer Science: 120 seats
-- Mechanical Engineering: 100 seats
-- Civil Engineering: 80 seats
-- Electrical Engineering: 90 seats
-- Management: 60 seats
-Check the online portal for real-time availability.""",
-    "Timetable": "Class timetable is available under the 'Timetable' section.",
+    "Admission Process": """Step 1: Visit Pandav College campus or website.
+Step 2: Fill admission form online/offline.
+Step 3: Pay fees (₹40,000-₹80,000 depending on course).
+Step 4: Submit documents (ID, mark sheets, photos).
+Step 5: Admission confirmed after verification.""",
+    "Seat Availability": """Seats per branch:
+- Computer Science: 120
+- Mechanical: 100
+- Civil: 80
+- Electrical: 90
+- Management: 60""",
+    "Timetable": "Class timetable is available under 'Timetable' section.",
     "Library": "Library open 9 AM - 6 PM. Student ID required.",
-    "Contact Admin": "Email: admin@pandavcollege.com | Phone: 123-456-7890. Available 9 AM - 5 PM.",
-    "Events": "Upcoming events and workshops are updated monthly.",
-    "Student Support": "Support via support@college.com or 987-654-3210.",
-    "Scholarships": "Merit and need-based scholarships available online.",
-    "Hostel": "Hostel available for outstation students. Apply online.",
-    "Sports": "Regular sports and extracurricular activities.",
-    "Technical Clubs": "Active coding, robotics, and AI clubs.",
+    "Contact Admin": "Email: admin@pandavcollege.com | Phone: 123-456-7890",
+    "Events": "Upcoming events updated monthly.",
+    "Student Support": "Support via support@college.com or 987-654-3210",
+    "Scholarships": "Merit & need-based scholarships available online.",
+    "Hostel": "Hostel available for outstation students.",
+    "Sports": "Sports and extracurricular activities available.",
+    "Technical Clubs": "Coding, robotics, AI clubs active.",
     "Placements": "Placement support for final year students.",
     "Departments": "Departments: Engineering, Management, Science.",
-    "Faculty": "Faculty details available under 'Faculty Info'."
+    "Faculty": "Faculty details under 'Faculty Info'."
 }
 
 # Admin credentials
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "admin123"
 
-# Routes
+# ROUTES
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -95,10 +91,8 @@ def contact():
         else:
             conn = sqlite3.connect(DB_NAME)
             c = conn.cursor()
-            c.execute(
-                "INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)",
-                (name, email, msg)
-            )
+            c.execute("INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)",
+                      (name, email, msg))
             conn.commit()
             conn.close()
             message = "Thank you! Your message has been sent."
@@ -112,6 +106,7 @@ def chat():
 def get_answer():
     topic = request.form.get("topic")
     answer = faq_answers.get(topic, "Sorry, I don't have info on that.")
+    # Save to DB
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
     c.execute("INSERT INTO chat_history (question, answer) VALUES (?, ?)", (topic, answer))
@@ -150,5 +145,7 @@ def logout():
     session.pop("admin", None)
     return redirect("/admin-login")
 
+# Render-ready port binding
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
