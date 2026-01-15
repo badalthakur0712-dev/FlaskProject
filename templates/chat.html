@@ -1,56 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chatbot</title>
-<style>
-body { font-family: Arial; background:#f5f5f5; margin:0; }
-header, footer { background:#007bff; color:#fff; padding:15px; text-align:center; }
-nav a { margin:0 15px; color:#fff; text-decoration:none; font-weight:bold; }
-.content { max-width:800px; margin:30px auto; background:#fff; padding:20px; border-radius:10px; }
-button { padding:8px 12px; margin:5px; border:none; border-radius:5px; background:#007bff; color:#fff; cursor:pointer;}
-button:hover{background:#0056b3;}
-#answer { margin-top:20px; padding:10px; background:#e0e0e0; border-radius:6px; min-height:50px;}
-</style>
+    <title>Pandav College Chatbot</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f8;
+        }
+        .chat-container{
+            width:60%;
+            margin:40px auto;
+            background:white;
+            border-radius:8px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+            overflow:hidden;
+        }
+        .chat-header{
+            background:#007bff;
+            color:white;
+            padding:15px;
+            text-align:center;
+            font-size:18px;
+        }
+        .chat-body{
+            padding:20px;
+            height:400px;
+            overflow-y:auto;
+        }
+        .msg{
+            margin-bottom:15px;
+            max-width:75%;
+            padding:10px 15px;
+            border-radius:10px;
+            font-size:15px;
+            line-height:1.4;
+        }
+        .user{
+            background:#dcf8c6;
+            margin-left:auto;
+            text-align:right;
+        }
+        .bot{
+            background:#f1f0f0;
+            margin-right:auto;
+        }
+        .options{
+            padding:15px;
+            border-top:1px solid #ddd;
+            background:#fafafa;
+        }
+        .options button{
+            margin:5px;
+            padding:8px 12px;
+            border:none;
+            border-radius:5px;
+            background:#007bff;
+            color:white;
+            cursor:pointer;
+            font-size:14px;
+        }
+        .options button:hover{
+            background:#0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">
+        💬 Pandav College Chatbot
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <div class="msg bot">
+            Hello 👋<br>
+            Please select a question below to get information.
+        </div>
+    </div>
+
+    <div class="options">
+        {% for q in faq.keys() %}
+            <button onclick="sendQuestion('{{ q }}')">{{ q }}</button>
+        {% endfor %}
+    </div>
+</div>
+
 <script>
-function askQuestion(topic){
-    fetch("/get-answer", {
+function sendQuestion(question){
+    let chat = document.getElementById("chatBody");
+
+    // User message
+    let userMsg = document.createElement("div");
+    userMsg.className = "msg user";
+    userMsg.innerText = question;
+    chat.appendChild(userMsg);
+
+    fetch("/get-answer",{
         method:"POST",
-        headers: {'Content-Type':'application/x-www-form-urlencoded'},
-        body: "topic="+encodeURIComponent(topic)
+        headers:{
+            "Content-Type":"application/x-www-form-urlencoded"
+        },
+        body:"question=" + encodeURIComponent(question)
     })
-    .then(res=>res.json())
-    .then(data=>{
-        document.getElementById("answer").innerText = data.answer;
+    .then(res => res.json())
+    .then(data => {
+        let botMsg = document.createElement("div");
+        botMsg.className = "msg bot";
+        botMsg.innerText = data.answer;
+        chat.appendChild(botMsg);
+        chat.scrollTop = chat.scrollHeight;
     });
 }
 </script>
-</head>
-<body>
-<header>
-<nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-    <a href="/chat">Chat</a>
-    <a href="/admin-login">Admin</a>
-</nav>
-</header>
 
-<div class="content">
-<h2>College Chatbot</h2>
-<p>Click a question to get an answer:</p>
-<div>
-{% for q in faq_answers %}
-<button onclick="askQuestion('{{ q }}')">{{ q }}</button>
-{% endfor %}
-</div>
-<div id="answer"></div>
-</div>
-
-<footer>
-&copy; 2026 Pandav College. All Rights Reserved.
-</footer>
 </body>
 </html>

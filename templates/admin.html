@@ -1,65 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel</title>
-<style>
-body { font-family: Arial; background:#f0f2f5; margin:0; }
-header { background:#007bff; color:#fff; padding:15px; text-align:center; }
-nav a { margin:0 15px; color:#fff; text-decoration:none; font-weight:bold;}
-nav a:hover{ text-decoration:underline; }
-.content { max-width:1000px; margin:30px auto; padding:20px; background:#fff; border-radius:10px; }
-h2 { margin-top:0; }
-table { width:100%; border-collapse: collapse; margin-bottom:30px; }
-th, td { border:1px solid #ccc; padding:8px; text-align:left; }
-th { background:#007bff; color:#fff; }
-</style>
+    <title>Admin Panel</title>
+    <style>
+        body{font-family:Arial;background:#f4f6f8}
+        table{border-collapse:collapse;width:100%;background:white}
+        th,td{border:1px solid #ccc;padding:8px}
+        th{background:#007bff;color:white}
+        a{color:red;text-decoration:none}
+    </style>
 </head>
 <body>
-<header>
-<nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-    <a href="/chat">Chat</a>
-    <a href="/logout">Logout</a>
-</nav>
-</header>
 
-<div class="content">
-<h2>Contact Messages</h2>
-{% if contacts %}
+<h2>Admin Panel</h2>
+<a href="/logout">Logout</a>
+
+<h3>Contact Messages</h3>
 <table>
-<tr><th>ID</th><th>Name</th><th>Email</th><th>Message</th></tr>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Message</th>
+</tr>
+
 {% for c in contacts %}
 <tr>
-<td>{{ c[0] }}</td>
-<td>{{ c[1] }}</td>
-<td>{{ c[2] }}</td>
-<td>{{ c[3] }}</td>
+    <td>{{ c[0] }}</td>
+    <td>{{ c[1] }}</td>
+    <td>{{ c[2] }}</td>
+    <td>{{ c[3] }}</td>
 </tr>
 {% endfor %}
 </table>
-{% else %}
-<p>No contact messages yet.</p>
-{% endif %}
 
-<h2>Chatbot Questions & Answers</h2>
-{% if chats %}
-<table>
-<tr><th>ID</th><th>Question</th><th>Answer</th></tr>
-{% for chat in chats %}
-<tr>
-<td>{{ chat[0] }}</td>
-<td>{{ chat[1] }}</td>
-<td>{{ chat[2] }}</td>
-</tr>
-{% endfor %}
-</table>
-{% else %}
-<p>No chatbot interactions yet.</p>
-{% endif %}
-</div>
 </body>
 </html>

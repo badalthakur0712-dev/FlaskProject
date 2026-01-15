@@ -1,44 +1,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Panel</title>
+    <title>Admin Panel | Pandav College</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f8;
+            margin:0;
+            padding:0;
+        }
+        header{
+            background:#2c3e50;
+            color:white;
+            padding:15px 30px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        header a{
+            color:white;
+            text-decoration:none;
+            background:#e74c3c;
+            padding:8px 15px;
+            border-radius:5px;
+        }
+        .container{
+            padding:30px;
+        }
+        h2{
+            color:#2c3e50;
+            margin-bottom:10px;
+        }
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-bottom:40px;
+            background:white;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+        th, td{
+            padding:12px;
+            border:1px solid #ddd;
+            text-align:left;
+        }
+        th{
+            background:#007bff;
+            color:white;
+        }
+        tr:nth-child(even){
+            background:#f9f9f9;
+        }
+        .section-title{
+            margin:25px 0 10px;
+            font-size:20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome, Admin</h1>
-    <a href="/logout">Logout</a>
 
-    <h2>Contact Messages</h2>
-    <table border="1" cellpadding="5">
+<header>
+    <h2>Admin Panel – Pandav College</h2>
+    <a href="/logout">Logout</a>
+</header>
+
+<div class="container">
+
+    <div class="section-title">📨 Contact Messages</div>
+    <table>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Message</th>
         </tr>
-        {% for contact in contacts %}
+        {% for c in contacts %}
         <tr>
-            <td>{{ contact[0] }}</td>
-            <td>{{ contact[1] }}</td>
-            <td>{{ contact[2] }}</td>
-            <td>{{ contact[3] }}</td>
+            <td>{{ c[0] }}</td>
+            <td>{{ c[1] }}</td>
+            <td>{{ c[2] }}</td>
+            <td>{{ c[3] }}</td>
         </tr>
         {% endfor %}
     </table>
 
-    <h2>Chat History</h2>
-    <table border="1" cellpadding="5">
+    <div class="section-title">💬 Chatbot History</div>
+    <table>
         <tr>
             <th>ID</th>
             <th>Question</th>
             <th>Answer</th>
         </tr>
-        {% for chat in chats %}
+        {% for ch in chats %}
         <tr>
-            <td>{{ chat[0] }}</td>
-            <td>{{ chat[1] }}</td>
-            <td>{{ chat[2] }}</td>
+            <td>{{ ch[0] }}</td>
+            <td>{{ ch[1] }}</td>
+            <td>{{ ch[2] }}</td>
         </tr>
         {% endfor %}
     </table>
+
+</div>
+
 </body>
 </html>
