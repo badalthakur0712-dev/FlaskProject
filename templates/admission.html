@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Contact Us | Pandav College</title>
+<title>Admission Enquiry | Pandav College</title>
 
 <style>
 body{
@@ -76,7 +76,7 @@ form{
     display:flex;
     flex-direction:column;
 }
-form input, form textarea{
+form input, form select, form textarea{
     margin-bottom:15px;
     padding:12px;
     border-radius:6px;
@@ -115,7 +115,10 @@ footer{
 }
 
 /* RESPONSIVE */
-@media(max-width:768px){ .page-header h1{font-size:28px;} .section{padding:30px;} }
+@media(max-width:768px){ 
+    .page-header h1{font-size:28px;} 
+    .section{padding:30px;} 
+}
 </style>
 </head>
 
@@ -135,27 +138,35 @@ footer{
 
 <!-- PAGE HEADER -->
 <div class="page-header">
-    <h1>Contact Pandav College</h1>
-    <p>Have a question? Reach out to us and we will get back to you as soon as possible.</p>
+    <h1>Admission Enquiry</h1>
+    <p>Fill out the form below to start your admission process at Pandav College of Polytechnic. Our team will contact you shortly.</p>
 </div>
 
 <!-- CONTENT -->
 <div class="content">
     <div class="section">
-        <h2>Contact Form</h2>
+        <h2>Admission Form</h2>
 
         {% if msg %}
         <div class="success-msg">{{ msg }}</div>
         {% endif %}
 
-        <form method="POST" action="/contact">
+        <form method="POST" action="/admission">
             <input type="text" name="name" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email Address" required>
-            <textarea name="message" placeholder="Your message..." rows="5" required></textarea>
-            <button type="submit">Send Message</button>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+            <select name="branch" required>
+                <option value="">Select Branch</option>
+                <option value="CSE">Computer Science & Engineering</option>
+                <option value="IT">Information Technology</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+                <option value="Civil">Civil Engineering</option>
+                <option value="Electrical">Electrical Engineering</option>
+            </select>
+            <textarea name="message" placeholder="Any message or questions..." rows="5"></textarea>
+            <button type="submit">Submit Enquiry</button>
         </form>
     </div>
-
 </div>
 
 <!-- FOOTER -->

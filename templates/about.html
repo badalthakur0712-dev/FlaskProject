@@ -1,71 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>About Us</title>
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            background:#f4f6f8;
-            margin:0;
-            padding:0;
-        }
-        .container{
-            width:80%;
-            margin:50px auto;
-            background:white;
-            padding:30px;
-            border-radius:8px;
-            box-shadow:0 0 10px rgba(0,0,0,0.1);
-        }
-        h1{
-            color:#2c3e50;
-        }
-        p{
-            font-size:16px;
-            line-height:1.7;
-            color:#333;
-        }
-        .highlight{
-            color:#007bff;
-            font-weight:bold;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>About Us | Pandav College of Polytechnic</title>
+
+<style>
+body{
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:#f4f7fb;
+    color:#222;
+}
+
+/* ================= NAVBAR ================= */
+nav{
+    background:#ffffff;
+    border-bottom:1px solid #e3e7ec;
+    padding:18px 0;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.navbar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:#0b2a44;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.4px;
+    position:relative;
+}
+
+.navbar a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#0b2a44;
+    transition:0.3s;
+}
+
+.navbar a:hover::after{
+    width:100%;
+}
+
+/* ================= PAGE HEADER ================= */
+.page-header{
+    background:
+        linear-gradient(
+            rgba(11,42,68,0.75),
+            rgba(11,42,68,0.75)
+        ),
+        url('{{ url_for("static", filename="images/lucas-law-ecELcxmJTk4-unsplash.jpg") }}')
+        center/cover no-repeat;
+    color:white;
+    padding:90px 20px;
+    text-align:center;
+}
+
+.page-header h1{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.page-header p{
+    font-size:17px;
+    max-width:800px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* ================= CONTENT ================= */
+.content{
+    max-width:1100px;
+    margin:70px auto;
+    padding:0 20px;
+}
+
+.section{
+    background:white;
+    padding:45px;
+    border-radius:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    margin-bottom:40px;
+}
+
+.section h2{
+    color:#0b2a44;
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+.section p{
+    font-size:16px;
+    line-height:1.9;
+    color:#333;
+}
+
+/* ================= STATS ================= */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.stat{
+    background:#0b2a44;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    border-radius:12px;
+}
+
+.stat h3{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.stat p{
+    font-size:15px;
+    opacity:0.9;
+}
+
+/* ================= FOOTER ================= */
+footer{
+    background:#081f33;
+    color:#dce3ea;
+    text-align:center;
+    padding:25px;
+    font-size:14px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .page-header h1{font-size:28px;}
+    .section{padding:30px;}
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>About Pandav College</h1>
+<!-- NAVBAR -->
+<nav>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/departments">Departments</a>
+        <a href="/admission">Admission</a>
+        <a href="/contact">Contact</a>
+        <a href="/chat">Help Desk</a>
+    </div>
+</nav>
 
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <h1>About Pandav College of Polytechnic</h1>
     <p>
-        <span class="highlight">Pandav College</span> is a professionally managed educational institution
-        committed to delivering quality education and holistic development to students.
-        Our goal is to empower learners with practical knowledge, strong values, and
-        industry-ready skills.
-    </p>
-
-    <p>
-        We offer a variety of diploma and degree programs across multiple branches including
-        Engineering, Management, and Computer Science. Our curriculum is designed to meet
-        modern industry standards and academic excellence.
-    </p>
-
-    <p>
-        The college provides well-equipped laboratories, a digital library, experienced faculty,
-        and a supportive learning environment. We focus not only on academics but also on
-        personality development, technical skills, and extracurricular activities.
-    </p>
-
-    <p>
-        At Pandav College, students are encouraged to innovate, collaborate, and grow into
-        responsible professionals. We aim to build a strong foundation for successful careers
-        and lifelong learning.
-    </p>
-
-    <p>
-        <b>Vision:</b> To be a leading institution recognized for academic excellence and innovation.<br>
-        <b>Mission:</b> To provide quality education, foster creativity, and prepare students for real-world challenges.
+        Empowering students through quality technical education,
+        discipline, innovation, and industry-ready skills.
     </p>
 </div>
+
+<!-- CONTENT -->
+<div class="content">
+
+    <div class="section">
+        <h2>Who We Are</h2>
+        <p>
+            Pandav College of Polytechnic is a premier technical institute
+            dedicated to delivering high-quality diploma education in
+            engineering disciplines. The institution focuses on academic
+            excellence, practical learning, and ethical values.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Our Vision</h2>
+        <p>
+            To become a leading polytechnic institute recognized for
+            innovation, industry-oriented education, and the holistic
+            development of students.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Our Mission</h2>
+        <p>
+            • Deliver skill-based technical education<br>
+            • Promote discipline and professionalism<br>
+            • Prepare students for industry and higher education<br>
+            • Encourage innovation and lifelong learning
+        </p>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <h3>5+</h3>
+            <p>Diploma Branches</p>
+        </div>
+        <div class="stat">
+            <h3>Expert</h3>
+            <p>Faculty Team</p>
+        </div>
+        <div class="stat">
+            <h3>Modern</h3>
+            <p>Infrastructure</p>
+        </div>
+        <div class="stat">
+            <h3>Career</h3>
+            <p>Focused Education</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Pandav College of Polytechnic | All Rights Reserved
+</footer>
 
 </body>
 </html>

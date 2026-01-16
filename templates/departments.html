@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Departments | Pandav College of Polytechnic</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{box-sizing:border-box;}
+
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:#333;
+}
+
+/* NAVBAR */
+nav{
+    background:rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    padding:16px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+nav .logo{
+    color:#fff;
+    font-size:24px;
+    font-weight:700;
+}
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:22px;
+    font-weight:500;
+}
+nav a:hover{opacity:0.8;}
+
+/* HERO */
+.hero{
+    padding:90px 20px;
+    text-align:center;
+    color:white;
+}
+.hero h1{
+    font-size:46px;
+    margin-bottom:15px;
+}
+.hero p{
+    font-size:18px;
+    opacity:0.9;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1100px;
+    margin:60px auto;
+    padding:0 20px;
+}
+
+/* DEPT CARD */
+.dept-card{
+    background:rgba(255,255,255,0.95);
+    border-radius:18px;
+    margin-bottom:25px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    transition:transform .3s;
+}
+.dept-card:hover{
+    transform:translateY(-4px);
+}
+
+/* HEADER */
+.dept-header{
+    padding:26px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+}
+.dept-header h2{
+    margin:0;
+    font-size:22px;
+    color:#003366;
+}
+.dept-header span{
+    font-size:26px;
+    color:#007bff;
+}
+
+/* CONTENT */
+.dept-content{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.5s ease;
+    background:#f8fbff;
+}
+
+.dept-inner{
+    padding:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.info-box{
+    background:white;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
+.info-box h4{
+    margin-bottom:8px;
+    color:#007bff;
+}
+.info-box p{
+    margin:0;
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* HIGHLIGHT */
+.fees{
+    font-size:26px;
+    font-weight:700;
+    color:#27ae60;
+}
+
+/* APPLY BUTTON */
+.apply-btn{
+    grid-column:1/-1;
+    text-align:center;
+    margin-top:10px;
+}
+.apply-btn a{
+    background:linear-gradient(135deg,#007bff,#00d4ff);
+    padding:14px 30px;
+    color:white;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    display:inline-block;
+}
+.apply-btn a:hover{opacity:0.9;}
+
+/* FOOTER */
+footer{
+    background:rgba(0,0,0,0.4);
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:80px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .hero h1{font-size:32px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="logo">Pandav College</div>
+    <div>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/departments">Departments</a>
+        <a href="/admission">Admission</a>
+        <a href="/contact">Contact</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Our Polytechnic Departments</h1>
+    <p>Industry-focused education • Transparent fees • Career-ready programs</p>
+</section>
+
+<div class="container">
+
+<!-- CSE -->
+<div class="dept-card">
+    <div class="dept-header" onclick="toggle(this)">
+        <h2>Computer Science & Engineering</h2><span>+</span>
+    </div>
+    <div class="dept-content">
+        <div class="dept-inner">
+            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+            <div class="info-box"><h4>Intake</h4><p>60 Seats</p></div>
+            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹80,000</p></div>
+            <div class="info-box"><h4>About</h4><p>Programming, AI, Web Development, Software Engineering.</p></div>
+            <div class="apply-btn"><a href="/admission">Apply for CSE</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- IT -->
+<div class="dept-card">
+    <div class="dept-header" onclick="toggle(this)">
+        <h2>Information Technology</h2><span>+</span>
+    </div>
+    <div class="dept-content">
+        <div class="dept-inner">
+            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+            <div class="info-box"><h4>Intake</h4><p>60 Seats</p></div>
+            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹75,000</p></div>
+            <div class="info-box"><h4>About</h4><p>Networking, Cyber Security, Cloud & IT Services.</p></div>
+            <div class="apply-btn"><a href="/admission">Apply for IT</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- MECH -->
+<div class="dept-card">
+    <div class="dept-header" onclick="toggle(this)">
+        <h2>Mechanical Engineering</h2><span>+</span>
+    </div>
+    <div class="dept-content">
+        <div class="dept-inner">
+            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+            <div class="info-box"><h4>Intake</h4><p>120 Seats</p></div>
+            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹65,000</p></div>
+            <div class="info-box"><h4>About</h4><p>Manufacturing, CAD, Thermal & Robotics.</p></div>
+            <div class="apply-btn"><a href="/admission">Apply for Mechanical</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- CIVIL -->
+<div class="dept-card">
+    <div class="dept-header" onclick="toggle(this)">
+        <h2>Civil Engineering</h2><span>+</span>
+    </div>
+    <div class="dept-content">
+        <div class="dept-inner">
+            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+            <div class="info-box"><h4>Intake</h4><p>120 Seats</p></div>
+            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹60,000</p></div>
+            <div class="info-box"><h4>About</h4><p>Construction, Surveying & Structural Design.</p></div>
+            <div class="apply-btn"><a href="/admission">Apply for Civil</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- ELECTRICAL -->
+<div class="dept-card">
+    <div class="dept-header" onclick="toggle(this)">
+        <h2>Electrical Engineering</h2><span>+</span>
+    </div>
+    <div class="dept-content">
+        <div class="dept-inner">
+            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+            <div class="info-box"><h4>Intake</h4><p>60 Seats</p></div>
+            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹60,000</p></div>
+            <div class="info-box"><h4>About</h4><p>Power Systems, Electronics & Automation.</p></div>
+            <div class="apply-btn"><a href="/admission">Apply for Electrical</a></div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<footer>
+© 2026 Pandav College of Polytechnic • AICTE Approved
+</footer>
+
+<script>
+function toggle(el){
+    const content = el.nextElementSibling;
+    const icon = el.querySelector("span");
+
+    if(content.style.maxHeight){
+        content.style.maxHeight = null;
+        icon.textContent = "+";
+    }else{
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.textContent = "−";
+    }
+}
+</script>
+
+</body>
+</html>

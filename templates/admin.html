@@ -1,40 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admin Panel | Pandav College</title>
-    <style>
-        body{font-family: Arial;background:#f4f6f8;margin:0;padding:0;}
-        header{background:#2c3e50;color:white;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;}
-        header a{color:white;text-decoration:none;background:#e74c3c;padding:8px 15px;border-radius:5px;}
-        .container{padding:30px;}
-        table{width:100%;border-collapse:collapse;margin-bottom:40px;background:white;box-shadow:0 0 10px rgba(0,0,0,0.1);}
-        th,td{padding:12px;border:1px solid #ddd;text-align:left;}
-        th{background:#007bff;color:white;}
-        tr:nth-child(even){background:#f9f9f9;}
-        .section-title{margin:25px 0 10px;font-size:20px;}
-    </style>
-</head>
-<body>
-<header>
-    <h2>Admin Panel – Pandav College</h2>
-    <a href="/logout">Logout</a>
-</header>
-<div class="container">
-    <div class="section-title">📨 Contact Messages</div>
-    <table>
-        <tr><th>ID</th><th>Name</th><th>Email</th><th>Message</th></tr>
-        {% for c in contacts %}
-        <tr><td>{{ c[0] }}</td><td>{{ c[1] }}</td><td>{{ c[2] }}</td><td>{{ c[3] }}</td></tr>
-        {% endfor %}
-    </table>
+<meta charset="UTF-8">
+<title>Admin Dashboard | Pandav College</title>
 
-    <div class="section-title">💬 Chatbot History</div>
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:linear-gradient(135deg,#f4f7fb,#e9eef5);
+}
+
+/* ================= NAVBAR ================= */
+nav{
+    background:linear-gradient(90deg,#0052d4,#4364f7,#6fb1fc);
+    padding:18px 0;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.nav-center{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:0.5px;
+    position:relative;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    background:white;
+    left:0;
+    bottom:-6px;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* ================= CONTAINER ================= */
+.container{
+    max-width:1300px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+h1{
+    text-align:center;
+    color:#1f3c88;
+    margin-bottom:40px;
+    font-size:34px;
+}
+
+/* ================= CARDS ================= */
+.card{
+    background:white;
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:40px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.1);
+}
+
+.card h2{
+    margin:0 0 25px;
+    color:#2c3e50;
+    border-left:5px solid #4364f7;
+    padding-left:12px;
+}
+
+/* ================= TABLE ================= */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table thead{
+    background:linear-gradient(90deg,#4364f7,#6fb1fc);
+    color:white;
+}
+
+table th, table td{
+    padding:14px 16px;
+    text-align:left;
+}
+
+table tbody tr{
+    transition:0.3s;
+}
+
+table tbody tr:hover{
+    background:#f1f5ff;
+}
+
+table td{
+    border-bottom:1px solid #ddd;
+}
+
+/* ================= EMPTY ROW ================= */
+.empty{
+    text-align:center;
+    padding:20px;
+    color:#777;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .nav-center{
+        flex-wrap:wrap;
+        gap:20px;
+    }
+    h1{
+        font-size:26px;
+    }
+    table{
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+    <div class="nav-center">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/chat">Chat</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<!-- ================= CONTENT ================= -->
+<div class="container">
+
+<h1>Admin Dashboard</h1>
+
+<!-- CONTACTS -->
+<div class="card">
+    <h2>Contact Messages</h2>
     <table>
-        <tr><th>ID</th><th>Question</th><th>Answer</th></tr>
-        {% for ch in chats %}
-        <tr><td>{{ ch[0] }}</td><td>{{ ch[1] }}</td><td>{{ ch[2] }}</td></tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in contacts %}
+            <tr>
+                <td>{{ c[0] }}</td>
+                <td>{{ c[1] }}</td>
+                <td>{{ c[2] }}</td>
+                <td>{{ c[3] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="empty">No contact messages available</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </div>
+
+<!-- CHAT HISTORY -->
+<div class="card">
+    <h2>Chat History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Question</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ch in chats %}
+            <tr>
+                <td>{{ ch[0] }}</td>
+                <td>{{ ch[1] }}</td>
+                <td>{{ ch[2] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" class="empty">No chat history found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- ADMISSION -->
+<div class="card">
+    <h2>Admission Enquiries</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Branch</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in admissions %}
+            <tr>
+                <td>{{ a[0] }}</td>
+                <td>{{ a[1] }}</td>
+                <td>{{ a[2] }}</td>
+                <td>{{ a[3] }}</td>
+                <td>{{ a[4] }}</td>
+                <td>{{ a[5] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="empty">No admission enquiries received</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</div>
+
 </body>
 </html>

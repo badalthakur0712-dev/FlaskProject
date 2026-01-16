@@ -1,80 +1,200 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pandav College Chatbot</title>
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            background:#f4f6f8;
-        }
-        .chat-container{
-            width:60%;
-            margin:40px auto;
-            background:white;
-            border-radius:8px;
-            box-shadow:0 0 10px rgba(0,0,0,0.1);
-            overflow:hidden;
-        }
-        .chat-header{
-            background:#007bff;
-            color:white;
-            padding:15px;
-            text-align:center;
-            font-size:18px;
-        }
-        .chat-body{
-            padding:20px;
-            height:400px;
-            overflow-y:auto;
-        }
-        .msg{
-            margin-bottom:15px;
-            max-width:75%;
-            padding:10px 15px;
-            border-radius:10px;
-            font-size:15px;
-            line-height:1.4;
-        }
-        .user{
-            background:#dcf8c6;
-            margin-left:auto;
-            text-align:right;
-        }
-        .bot{
-            background:#f1f0f0;
-            margin-right:auto;
-        }
-        .options{
-            padding:15px;
-            border-top:1px solid #ddd;
-            background:#fafafa;
-        }
-        .options button{
-            margin:5px;
-            padding:8px 12px;
-            border:none;
-            border-radius:5px;
-            background:#007bff;
-            color:white;
-            cursor:pointer;
-            font-size:14px;
-        }
-        .options button:hover{
-            background:#0056b3;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Pandav College Help Desk</title>
+<style>
+body{
+    font-family:"Segoe UI", Arial, sans-serif;
+    margin:0;
+    background:#f4f7fb;
+    color:#222;
+}
+
+/* NAVBAR SAME AS HOME */
+nav{
+    background:#ffffff;
+    border-bottom:1px solid #e3e7ec;
+    padding:18px 0;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.navbar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+}
+.navbar a{
+    text-decoration:none;
+    color:#0b2a44;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.4px;
+    position:relative;
+}
+.navbar a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#0b2a44;
+    transition:0.3s;
+}
+.navbar a:hover::after{ width:100%; }
+
+/* PAGE HEADER */
+.page-header{
+    background:
+        linear-gradient(rgba(11,42,68,0.8), rgba(11,42,68,0.8)),
+        url('{{ url_for("static", filename="images/lucas-law-ecELcxmJTk4-unsplash.jpg") }}') center/cover no-repeat;
+    color:white;
+    padding:90px 20px;
+    text-align:center;
+}
+.page-header h1{ font-size:38px; margin-bottom:10px; }
+.page-header p{ font-size:17px; max-width:800px; margin:auto; line-height:1.7; }
+
+/* CHATBOX */
+.chat-container{
+    max-width:720px;
+    margin:60px auto;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    overflow:hidden;
+}
+.chat-header{
+    background:#0b2a44;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:20px;
+    font-weight:600;
+}
+.chat-body{
+    padding:20px;
+    height:450px;
+    overflow-y:auto;
+    background:#f9f9f9;
+}
+.msg{
+    margin-bottom:18px;
+    max-width:75%;
+    padding:12px 16px;
+    border-radius:12px;
+    font-size:15px;
+    line-height:1.5;
+    word-wrap:break-word;
+}
+.user{
+    background:linear-gradient(135deg,#9df0d5,#4de1c1);
+    color:#111;
+    margin-left:auto;
+    text-align:right;
+}
+.bot{
+    background:linear-gradient(135deg,#ffffff,#f1f0f0);
+    border:1px solid #ddd;
+    margin-right:auto;
+}
+.typing{
+    font-style:italic;
+    color:#555;
+}
+
+/* OPTIONS */
+.options{
+    padding:15px;
+    border-top:1px solid #ddd;
+    background:#fafafa;
+    text-align:center;
+}
+.options button{
+    margin:5px;
+    padding:8px 14px;
+    border:none;
+    border-radius:6px;
+    background:#0b2a44;
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+    transition:0.3s;
+}
+.options button:hover{ background:#00506b; }
+
+/* CUSTOM INPUT */
+.custom-input{
+    display:flex;
+    justify-content:center;
+    margin-top:10px;
+}
+.custom-input input{
+    width:70%;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+.custom-input button{
+    padding:10px 14px;
+    margin-left:5px;
+    border:none;
+    border-radius:6px;
+    background:#0b2a44;
+    color:white;
+    cursor:pointer;
+}
+.custom-input button:hover{ background:#00506b; }
+
+/* FOOTER */
+footer{
+    background:#081f33;
+    color:#dce3ea;
+    text-align:center;
+    padding:25px;
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .chat-container{ width:95%; }
+    .page-header h1{ font-size:28px; }
+}
+</style>
 </head>
 <body>
 
+<!-- NAVBAR -->
+<nav>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/departments">Departments</a>
+        <a href="/admission">Admission</a>
+        <a href="/contact">Contact</a>
+        <a href="/chat">Help Desk</a>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <h1>Pandav College Help Desk</h1>
+    <p>Ask anything about fees, branches, timetable, admissions, or facilities. Our friendly assistant will guide you step by step!</p>
+</div>
+
+<!-- CHATBOX -->
 <div class="chat-container">
     <div class="chat-header">
-        💬 Pandav College Chatbot
+        💬 Pandav College Assistant
     </div>
 
     <div class="chat-body" id="chatBody">
         <div class="msg bot">
-            Hello 👋<br>
-            Please select a question below to get information.
+            Hello 👋 Welcome! I am your Pandav College assistant. Please select a question or type your query. Thanks for asking! 😊
         </div>
     </div>
 
@@ -83,35 +203,74 @@
             <button onclick="sendQuestion('{{ q }}')">{{ q }}</button>
         {% endfor %}
     </div>
+
+    <div class="custom-input">
+        <input type="text" id="userInput" placeholder="Type your question here...">
+        <button onclick="submitCustom()">Send</button>
+    </div>
 </div>
 
 <script>
+const chatBody = document.getElementById("chatBody");
+const userInput = document.getElementById("userInput");
+
+// Append message to chat
+function appendMessage(text, sender="bot"){
+    let msgDiv = document.createElement("div");
+    msgDiv.className = "msg " + sender;
+    msgDiv.innerText = text;
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+// Typing effect
+function botReply(text){
+    let typingDiv = document.createElement("div");
+    typingDiv.className = "msg bot typing";
+    typingDiv.innerText = "Bot is typing...";
+    chatBody.appendChild(typingDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    setTimeout(()=>{
+        typingDiv.remove();
+        appendMessage(text,"bot");
+    }, 1200 + Math.random()*1500);
+}
+
+// Handle button FAQ
 function sendQuestion(question){
-    let chat = document.getElementById("chatBody");
-
-    // User message
-    let userMsg = document.createElement("div");
-    userMsg.className = "msg user";
-    userMsg.innerText = question;
-    chat.appendChild(userMsg);
-
+    appendMessage(question,"user");
     fetch("/get-answer",{
         method:"POST",
-        headers:{
-            "Content-Type":"application/x-www-form-urlencoded"
-        },
+        headers:{"Content-Type":"application/x-www-form-urlencoded"},
         body:"question=" + encodeURIComponent(question)
     })
-    .then(res => res.json())
-    .then(data => {
-        let botMsg = document.createElement("div");
-        botMsg.className = "msg bot";
-        botMsg.innerText = data.answer;
-        chat.appendChild(botMsg);
-        chat.scrollTop = chat.scrollHeight;
+    .then(res=>res.json())
+    .then(data=>{
+        botReply(data.answer);
+    });
+}
+
+// Handle custom typed question
+function submitCustom(){
+    let q = userInput.value.trim();
+    if(q=="") return;
+    appendMessage(q,"user");
+    userInput.value = "";
+    fetch("/get-answer",{
+        method:"POST",
+        headers:{"Content-Type":"application/x-www-form-urlencoded"},
+        body:"question=" + encodeURIComponent(q)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        botReply(data.answer);
     });
 }
 </script>
 
+<footer>
+    © 2026 Pandav College of Polytechnic | All Rights Reserved
+</footer>
 </body>
 </html>

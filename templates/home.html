@@ -2,52 +2,281 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pandav College Web</title>
+<title>Pandav College of Polytechnic</title>
+
 <style>
-body { font-family: Arial; margin:0; padding:0; background:#f5f5f5; }
-header { background:#007bff; color:#fff; padding:15px; text-align:center; }
-nav a { margin:0 15px; color:#fff; text-decoration:none; font-weight:bold; }
-.hero {
-    background: url('/static/images/lucas-law-ecELcxmJTk4-unsplash.jpg') no-repeat center center;
-    background-size: cover;
-    height:450px;
+body{
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:#f4f7fb;
+    color:#222;
+}
+
+/* ================= NAVBAR ================= */
+nav{
+    background:#ffffff;
+    border-bottom:1px solid #e3e7ec;
+    padding:18px 0;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.navbar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:#0b2a44;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.4px;
+    position:relative;
+}
+
+.navbar a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#0b2a44;
+    transition:0.3s;
+}
+
+.navbar a:hover::after{
+    width:100%;
+}
+
+/* ================= HERO ================= */
+.hero{
+    height:480px;
+    background:
+        linear-gradient(
+            rgba(11,42,68,0.65),
+            rgba(11,42,68,0.65)
+        ),
+        url('{{ url_for("static", filename="images/lucas-law-ecELcxmJTk4-unsplash.jpg") }}')
+        center/cover no-repeat;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#fff;
-    font-size:48px;
-    font-weight:bold;
-    text-shadow:3px 3px 8px rgba(0,0,0,0.7);
+    text-align:center;
+    color:white;
+    padding:0 20px;
+}
+
+.hero h1{
+    font-size:46px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    max-width:760px;
+    line-height:1.7;
+    margin:auto;
+}
+
+/* ================= CO-FOUNDER ================= */
+.cofounder{
+    background:white;
+    padding:80px 20px;
+}
+
+.cofounder h2{
+    text-align:center;
+    color:#0b2a44;
+    font-size:32px;
+    margin-bottom:50px;
+}
+
+.cofounder-box{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    gap:50px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.cofounder-img{
+    flex:1;
     text-align:center;
 }
-.content { padding:30px; text-align:center; }
-footer { background:#007bff; color:#fff; padding:15px; text-align:center; margin-top:30px; }
+
+.cofounder-img img{
+    width:260px;
+    border-radius:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.2);
+}
+
+.cofounder-text{
+    flex:2;
+}
+
+.cofounder-text h3{
+    margin:0;
+    font-size:26px;
+    color:#0b2a44;
+}
+
+.cofounder-text span{
+    display:block;
+    margin:6px 0 18px;
+    font-weight:600;
+    color:#555;
+}
+
+.cofounder-text p{
+    font-size:16px;
+    line-height:1.9;
+    color:#333;
+    margin-bottom:16px;
+}
+
+/* ================= HIGHLIGHT STRIP ================= */
+.highlights{
+    background:#0b2a44;
+    color:white;
+    padding:50px 20px;
+}
+
+.highlight-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.highlight{
+    padding:20px;
+}
+
+.highlight h3{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.highlight p{
+    font-size:15px;
+    opacity:0.9;
+}
+
+/* ================= FOOTER ================= */
+footer{
+    background:#081f33;
+    color:#dce3ea;
+    text-align:center;
+    padding:25px;
+    font-size:14px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .hero h1{font-size:30px;}
+    .hero p{font-size:16px;}
+    .cofounder-box{flex-direction:column;text-align:center;}
+}
 </style>
 </head>
+
 <body>
-<header>
+
+<!-- NAVBAR -->
 <nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-    <a href="/chat">Chat</a>
-    <a href="/admin-login">Admin</a>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/departments">Departments</a>
+        <a href="/admission">Admission</a>
+        <a href="/contact">Contact</a>
+        <a href="/chat">Help Desk</a>
+    </div>
 </nav>
-</header>
 
+<!-- HERO -->
 <div class="hero">
-Welcome to Pandav College Web
+    <div>
+        <h1>Pandav College of Polytechnic</h1>
+        <p>
+            A center of excellence committed to quality technical education,
+            innovation, discipline, and the holistic development of students.
+        </p>
+    </div>
 </div>
 
-<div class="content">
-<h2>Professional College Website</h2>
-<p>Get all information about fees, admissions, timetable, departments, and more! 
-Use our chatbot to instantly get answers on any topic related to the college.</p>
-</div>
+<!-- CO-FOUNDER -->
+<section class="cofounder">
+    <h2>Message from the Co-Founder</h2>
 
+    <div class="cofounder-box">
+        <div class="cofounder-img">
+            <img src="{{ url_for('static', filename='images/cofounder.png') }}" alt="Co-Founder">
+        </div>
+
+        <div class="cofounder-text">
+            <h3>Shri. Sachin Tagalpallewar</h3>
+            <span>Co-Founder | Pandav College of Polytechnic</span>
+
+            <p>
+                Pandav College of Polytechnic was established with a clear vision —
+                to provide high-quality technical education that empowers students
+                with knowledge, skills, and ethical values.
+            </p>
+
+            <p>
+                Our focus is not only on academics, but also on discipline,
+                innovation, industry readiness, and character building.
+                We believe every student has the potential to become a skilled
+                professional and a responsible citizen.
+            </p>
+
+            <p>
+                With experienced faculty, modern infrastructure, and a
+                student-centric approach, Pandav College continuously strives
+                to shape future engineers who can confidently meet real-world
+                challenges.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights">
+    <div class="highlight-grid">
+        <div class="highlight">
+            <h3>5+</h3>
+            <p>Diploma Engineering Branches</p>
+        </div>
+        <div class="highlight">
+            <h3>Experienced</h3>
+            <p>Qualified Faculty Members</p>
+        </div>
+        <div class="highlight">
+            <h3>Industry</h3>
+            <p>Skill-Oriented Curriculum</p>
+        </div>
+        <div class="highlight">
+            <h3>Career</h3>
+            <p>Placement Guidance & Support</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-&copy; 2026 Pandav College. All Rights Reserved.
+    © 2026 Pandav College of Polytechnic | All Rights Reserved
 </footer>
+
 </body>
 </html>
