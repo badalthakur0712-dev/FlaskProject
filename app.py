@@ -11,7 +11,7 @@ DB = os.path.join(BASE_DIR, "college.db")
 def init_db():
     conn = sqlite3.connect(DB)
     c = conn.cursor()
-    # Contacts table
+
     c.execute("""
         CREATE TABLE IF NOT EXISTS contacts(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,7 +20,7 @@ def init_db():
             message TEXT
         )
     """)
-    # Chat history table
+
     c.execute("""
         CREATE TABLE IF NOT EXISTS chat_history(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,7 +28,7 @@ def init_db():
             answer TEXT
         )
     """)
-    # Admission table
+
     c.execute("""
         CREATE TABLE IF NOT EXISTS admission(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -39,6 +39,7 @@ def init_db():
             message TEXT
         )
     """)
+
     conn.commit()
     conn.close()
 
@@ -48,28 +49,56 @@ init_db()
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "admin123"
 
-# ================= CHATBOT =================
+# ================= CHATBOT (UPDATED) =================
 faq_answers = {
-    "What is the fees structure?": "Thank you for asking! Our fees range between ₹40,000 to ₹80,000 per year depending on the branch and facilities.",
-    "How can I apply for admission?": "You can apply by filling the Admission Enquiry form on our website. Our team will guide you step-by-step until your enrollment is confirmed.",
-    "Are there seats available in CSE?": "Seats vary per branch. CSE and IT have 60 each, Mechanical 80, Civil 60, Electrical 60. Availability is updated regularly.",
-    "What branches do you offer?": "We offer Computer Science (CSE), Information Technology (IT), Mechanical, Civil, and Electrical Engineering.",
-    "Where can I check the timetable?": "Timetables are available on the college website and notice boards. Classes start at 9:00 AM and end at 5:00 PM.",
-    "What are the library timings?": "Our library is open 9 AM – 6 PM. It has over 10,000 books, journals, and digital resources for students.",
-    "Do you provide hostel facilities?": "Separate hostel facilities are available for boys and girls, with all necessary amenities and security.",
-    "Do you offer placement assistance?": "We provide placement assistance in the final year, with campus interviews, industry visits, and training programs.",
-    "What scholarships are available?": "Merit-based and government scholarships are available. Students can apply through the college office.",
-    "How can I contact the admin?": "You can reach our admin at admin@pandavcollege.com or call +91-9876543210.",
-    "Do you organize events?": "We organize technical fests, cultural programs, and sports events every year to encourage holistic development.",
-    "What sports facilities are available?": "Indoor and outdoor sports facilities include cricket, football, basketball, badminton, and table tennis.",
-    "Tell me about your faculty.": "Our faculty members are highly experienced, with PhDs and industry experience in their respective fields.",
-    "Where is the college located?": "Pandav College is located in India with easy access by road and public transport.",
-    "What are the office hours?": "Office hours are 9 AM to 5 PM, Monday to Friday.",
-    "Tell me about the CSE branch.": "CSE branch focuses on Software Development, AI, Machine Learning, and Web & App Development. Fees: ₹80,000/year, Seats: 60.",
-    "Tell me about the IT branch.": "IT branch focuses on Networking, Cybersecurity, and Cloud Computing. Fees: ₹75,000/year, Seats: 60.",
-    "Tell me about the Mechanical branch.": "Mechanical branch focuses on Machines, Thermodynamics, and Robotics. Fees: ₹70,000/year, Seats: 80.",
-    "Tell me about the Civil branch.": "Civil branch focuses on Construction, Design, and Structural Analysis. Fees: ₹65,000/year, Seats: 60.",
-    "Tell me about the Electrical branch.": "Electrical branch focuses on Circuits, Power Systems, and Electronics. Fees: ₹68,000/year, Seats: 60."
+
+    "What is Pandav College of Polytechnic?":
+    "Pandav College of Polytechnic is an AICTE-approved institute offering quality diploma engineering education with a strong focus on discipline, practical knowledge, and career readiness.",
+
+    "What diploma engineering branches are available in your college?":
+    "We offer diploma programs in Computer Science Engineering, Mechanical Engineering, Civil Engineering, Electrical Engineering, and Electronics Engineering.",
+
+    "What is the admission process for diploma courses?":
+    "Students can apply by filling the admission enquiry form on our website or by visiting the college campus. Our admission team will guide you step by step.",
+
+    "Is admission currently open for 2026?":
+    "Yes, admissions for the academic year 2026 are currently open. Seats are limited, so early application is recommended.",
+
+    "What is the fee structure for diploma engineering courses?":
+    "The annual diploma fees range from ₹60,000 to ₹80,000 depending on the selected engineering branch.",
+
+    "Tell me about the Computer Science Engineering branch.":
+    "Computer Science Engineering focuses on programming, software development, web technologies, and basic AI concepts. Duration: 3 years | Fees: ₹80,000 per year | Seats: 60.",
+
+    "Tell me about the Mechanical Engineering branch.":
+    "Mechanical Engineering covers machines, manufacturing processes, CAD design, thermodynamics, and robotics. Duration: 3 years | Fees: ₹65,000 per year | Seats: 80.",
+
+    "Tell me about the Civil Engineering branch.":
+    "Civil Engineering focuses on construction technology, surveying, structural design, and infrastructure development. Duration: 3 years | Fees: ₹60,000 per year | Seats: 60.",
+
+    "Tell me about the Electrical Engineering branch.":
+    "Electrical Engineering deals with power systems, electrical machines, wiring systems, and industrial automation. Duration: 3 years | Fees: ₹60,000 per year | Seats: 60.",
+
+    "Tell me about the Electronics Engineering branch.":
+    "Electronics Engineering focuses on electronic circuits, communication systems, embedded systems, microcontrollers, and industrial electronics. Duration: 3 years | Fees: ₹65,000 per year | Seats: 60.",
+
+    "What career opportunities are available after Electronics Engineering?":
+    "Electronics Engineering graduates can work in electronics manufacturing, automation industries, embedded systems, telecom companies, and industrial electronics sectors.",
+
+    "Do you provide placement assistance?":
+    "Yes, we provide placement assistance in the final year through training programs, industry interaction, and campus interview support.",
+
+    "Is hostel or transport facility available?":
+    "Information regarding hostel and transport facilities can be obtained directly from the college administration office.",
+
+    "Where can I check the college timetable?":
+    "Timetables are prepared semester-wise and are available on department notice boards and through the college office.",
+
+    "How can I contact the college administration?":
+    "You can contact the college through the Contact page on the website or visit the campus during office hours.",
+
+    "What are the college office hours?":
+    "The college office works from 9:00 AM to 5:00 PM, Monday to Friday."
 }
 
 # ================= ROUTES =================
@@ -84,11 +113,11 @@ def about():
 @app.route("/departments")
 def departments():
     branches = {
-        "CSE": "Computer Science Engineering – Software, AI, Coding",
-        "IT": "Information Technology – Networking & Cloud",
-        "Mechanical": "Mechanical Engineering – Machines & Robotics",
-        "Civil": "Civil Engineering – Construction & Design",
-        "Electrical": "Electrical Engineering – Power & Electronics"
+        "Computer Science Engineering": "Software Development, Programming, AI & Web Technologies",
+        "Mechanical Engineering": "Machines, Manufacturing, CAD & Robotics",
+        "Civil Engineering": "Construction, Surveying & Structural Design",
+        "Electrical Engineering": "Power Systems, Wiring & Industrial Automation",
+        "Electronics Engineering": "Embedded Systems, Communication & Industrial Electronics"
     }
     return render_template("departments.html", branches=branches)
 
@@ -139,24 +168,27 @@ def chat():
 @app.route("/get-answer", methods=["POST"])
 def get_answer():
     question = request.form.get("question")
-    answer = faq_answers.get(question, "Thank you for asking! Please contact our admin for detailed information.")
+    answer = faq_answers.get(
+        question,
+        "Thank you for asking! For detailed information, please contact the college administration."
+    )
+
     conn = sqlite3.connect(DB)
     c = conn.cursor()
     c.execute("INSERT INTO chat_history(question,answer) VALUES (?,?)", (question, answer))
     conn.commit()
     conn.close()
+
     return jsonify({"answer": answer})
 
-# ================= ADMIN LOGIN =================
+# ================= ADMIN =================
 @app.route("/admin-login", methods=["GET","POST"])
 def admin_login():
     error = ""
     if request.method == "GET":
         session.clear()
     if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+        if request.form.get("username") == ADMIN_USERNAME and request.form.get("password") == ADMIN_PASSWORD:
             session["admin_logged_in"] = True
             return redirect("/admin-panel")
         else:
@@ -167,16 +199,27 @@ def admin_login():
 def admin_panel():
     if not session.get("admin_logged_in"):
         return redirect("/admin-login")
+
     conn = sqlite3.connect(DB)
     c = conn.cursor()
+
     c.execute("SELECT * FROM contacts ORDER BY id DESC")
     contacts = c.fetchall()
+
     c.execute("SELECT * FROM chat_history ORDER BY id DESC")
     chats = c.fetchall()
+
     c.execute("SELECT * FROM admission ORDER BY id DESC")
     admissions = c.fetchall()
+
     conn.close()
-    return render_template("admin.html", contacts=contacts, chats=chats, admissions=admissions)
+
+    return render_template(
+        "admin.html",
+        contacts=contacts,
+        chats=chats,
+        admissions=admissions
+    )
 
 @app.route("/logout")
 def logout():

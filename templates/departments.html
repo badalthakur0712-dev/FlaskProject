@@ -6,7 +6,6 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
 *{box-sizing:border-box;}
 
 body{
@@ -18,7 +17,7 @@ body{
 
 /* NAVBAR */
 nav{
-    background:rgba(0,0,0,0.4);
+    background:rgba(0,0,0,0.45);
     backdrop-filter: blur(10px);
     padding:16px 40px;
     display:flex;
@@ -65,7 +64,7 @@ nav a:hover{opacity:0.8;}
 
 /* DEPT CARD */
 .dept-card{
-    background:rgba(255,255,255,0.95);
+    background:rgba(255,255,255,0.96);
     border-radius:18px;
     margin-bottom:25px;
     overflow:hidden;
@@ -101,14 +100,12 @@ nav a:hover{opacity:0.8;}
     transition:max-height 0.5s ease;
     background:#f8fbff;
 }
-
 .dept-inner{
     padding:30px;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:25px;
 }
-
 .info-box{
     background:white;
     border-radius:14px;
@@ -125,18 +122,17 @@ nav a:hover{opacity:0.8;}
     line-height:1.6;
 }
 
-/* HIGHLIGHT */
+/* FEES */
 .fees{
     font-size:26px;
     font-weight:700;
     color:#27ae60;
 }
 
-/* APPLY BUTTON */
+/* APPLY */
 .apply-btn{
     grid-column:1/-1;
     text-align:center;
-    margin-top:10px;
 }
 .apply-btn a{
     background:linear-gradient(135deg,#007bff,#00d4ff);
@@ -158,7 +154,6 @@ footer{
     margin-top:80px;
 }
 
-/* MOBILE */
 @media(max-width:768px){
     .hero h1{font-size:32px;}
 }
@@ -182,89 +177,89 @@ footer{
 <!-- HERO -->
 <section class="hero">
     <h1>Our Polytechnic Departments</h1>
-    <p>Industry-focused education • Transparent fees • Career-ready programs</p>
+    <p>AICTE Approved • Transparent Fees • Career-Oriented Education</p>
 </section>
 
 <div class="container">
 
 <!-- CSE -->
 <div class="dept-card">
-    <div class="dept-header" onclick="toggle(this)">
-        <h2>Computer Science & Engineering</h2><span>+</span>
-    </div>
-    <div class="dept-content">
-        <div class="dept-inner">
-            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
-            <div class="info-box"><h4>Intake</h4><p>60 Seats</p></div>
-            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹80,000</p></div>
-            <div class="info-box"><h4>About</h4><p>Programming, AI, Web Development, Software Engineering.</p></div>
-            <div class="apply-btn"><a href="/admission">Apply for CSE</a></div>
-        </div>
-    </div>
+<div class="dept-header" onclick="toggle(this)">
+<h2>Computer Science Engineering</h2><span>+</span>
+</div>
+<div class="dept-content">
+<div class="dept-inner">
+<div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+<div class="info-box"><h4>Intake</h4><p>60 Seats</p></div>
+<div class="info-box"><h4>Annual Fees</h4><p class="fees">₹80,000</p></div>
+<div class="info-box"><h4>About</h4><p>Programming, AI, Software Development, Web & App Technologies.</p></div>
+<div class="apply-btn"><a href="/admission">Apply for CSE</a></div>
+</div>
+</div>
 </div>
 
-<!-- IT -->
+<!-- MECHANICAL -->
 <div class="dept-card">
-    <div class="dept-header" onclick="toggle(this)">
-        <h2>Information Technology</h2><span>+</span>
-    </div>
-    <div class="dept-content">
-        <div class="dept-inner">
-            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
-            <div class="info-box"><h4>Intake</h4><p>60 Seats</p></div>
-            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹75,000</p></div>
-            <div class="info-box"><h4>About</h4><p>Networking, Cyber Security, Cloud & IT Services.</p></div>
-            <div class="apply-btn"><a href="/admission">Apply for IT</a></div>
-        </div>
-    </div>
+<div class="dept-header" onclick="toggle(this)">
+<h2>Mechanical Engineering</h2><span>+</span>
 </div>
-
-<!-- MECH -->
-<div class="dept-card">
-    <div class="dept-header" onclick="toggle(this)">
-        <h2>Mechanical Engineering</h2><span>+</span>
-    </div>
-    <div class="dept-content">
-        <div class="dept-inner">
-            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
-            <div class="info-box"><h4>Intake</h4><p>120 Seats</p></div>
-            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹65,000</p></div>
-            <div class="info-box"><h4>About</h4><p>Manufacturing, CAD, Thermal & Robotics.</p></div>
-            <div class="apply-btn"><a href="/admission">Apply for Mechanical</a></div>
-        </div>
-    </div>
+<div class="dept-content">
+<div class="dept-inner">
+<div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+<div class="info-box"><h4>Intake</h4><p>120 Seats</p></div>
+<div class="info-box"><h4>Annual Fees</h4><p class="fees">₹65,000</p></div>
+<div class="info-box"><h4>About</h4><p>Manufacturing, CAD, Thermal Engineering, Robotics.</p></div>
+<div class="apply-btn"><a href="/admission">Apply for Mechanical</a></div>
+</div>
+</div>
 </div>
 
 <!-- CIVIL -->
 <div class="dept-card">
-    <div class="dept-header" onclick="toggle(this)">
-        <h2>Civil Engineering</h2><span>+</span>
-    </div>
-    <div class="dept-content">
-        <div class="dept-inner">
-            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
-            <div class="info-box"><h4>Intake</h4><p>120 Seats</p></div>
-            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹60,000</p></div>
-            <div class="info-box"><h4>About</h4><p>Construction, Surveying & Structural Design.</p></div>
-            <div class="apply-btn"><a href="/admission">Apply for Civil</a></div>
-        </div>
-    </div>
+<div class="dept-header" onclick="toggle(this)">
+<h2>Civil Engineering</h2><span>+</span>
+</div>
+<div class="dept-content">
+<div class="dept-inner">
+<div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+<div class="info-box"><h4>Intake</h4><p>120 Seats</p></div>
+<div class="info-box"><h4>Annual Fees</h4><p class="fees">₹60,000</p></div>
+<div class="info-box"><h4>About</h4><p>Construction Technology, Surveying, Structural Design.</p></div>
+<div class="apply-btn"><a href="/admission">Apply for Civil</a></div>
+</div>
+</div>
 </div>
 
 <!-- ELECTRICAL -->
 <div class="dept-card">
-    <div class="dept-header" onclick="toggle(this)">
-        <h2>Electrical Engineering</h2><span>+</span>
-    </div>
-    <div class="dept-content">
-        <div class="dept-inner">
-            <div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
-            <div class="info-box"><h4>Intake</h4><p>60 Seats</p></div>
-            <div class="info-box"><h4>Annual Fees</h4><p class="fees">₹60,000</p></div>
-            <div class="info-box"><h4>About</h4><p>Power Systems, Electronics & Automation.</p></div>
-            <div class="apply-btn"><a href="/admission">Apply for Electrical</a></div>
-        </div>
-    </div>
+<div class="dept-header" onclick="toggle(this)">
+<h2>Electrical Engineering</h2><span>+</span>
+</div>
+<div class="dept-content">
+<div class="dept-inner">
+<div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+<div class="info-box"><h4>Intake</h4><p>60 Seats</p></div>
+<div class="info-box"><h4>Annual Fees</h4><p class="fees">₹60,000</p></div>
+<div class="info-box"><h4>About</h4><p>Power Systems, Electrical Machines, Industrial Automation.</p></div>
+<div class="apply-btn"><a href="/admission">Apply for Electrical</a></div>
+</div>
+</div>
+</div>
+
+<!-- ELECTRONICS -->
+<div class="dept-card">
+<div class="dept-header" onclick="toggle(this)">
+<h2>Electronics Engineering</h2><span>+</span>
+</div>
+<div class="dept-content">
+<div class="dept-inner">
+<div class="info-box"><h4>Duration</h4><p>3 Years Diploma</p></div>
+<div class="info-box"><h4>Intake</h4><p>60 Seats</p></div>
+<div class="info-box"><h4>Annual Fees</h4><p class="fees">₹62,000</p></div>
+<div class="info-box"><h4>About</h4><p>Electronic Circuits, Communication Systems, Embedded Basics.</p></div>
+<div class="apply-btn"><a href="/admission">Apply for Electronics</a></div>
+</div>
+</div>
 </div>
 
 </div>
@@ -277,7 +272,6 @@ footer{
 function toggle(el){
     const content = el.nextElementSibling;
     const icon = el.querySelector("span");
-
     if(content.style.maxHeight){
         content.style.maxHeight = null;
         icon.textContent = "+";

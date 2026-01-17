@@ -2,122 +2,98 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Admission Enquiry | Pandav College</title>
+<title>Admission Form | Pandav College of Polytechnic</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 body{
     margin:0;
-    font-family:"Segoe UI", Arial, sans-serif;
-    background:#f4f7fb;
-    color:#222;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#141e30,#243b55);
 }
 
-/* NAVBAR SAME AS HOME */
+/* NAVBAR */
 nav{
-    background:#ffffff;
-    border-bottom:1px solid #e3e7ec;
-    padding:18px 0;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-.navbar{
+    background:rgba(0,0,0,0.45);
+    backdrop-filter: blur(10px);
+    padding:16px 40px;
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items:center;
-    gap:40px;
 }
-.navbar a{
+nav .logo{
+    color:#fff;
+    font-size:24px;
+    font-weight:700;
+}
+nav a{
+    color:#fff;
     text-decoration:none;
-    color:#0b2a44;
-    font-weight:600;
-    font-size:15px;
-    letter-spacing:0.4px;
-    position:relative;
+    margin-left:22px;
+    font-weight:500;
 }
-.navbar a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0;
-    height:2px;
-    background:#0b2a44;
-    transition:0.3s;
-}
-.navbar a:hover::after{ width:100%; }
+nav a:hover{opacity:0.8;}
 
-/* PAGE HEADER */
-.page-header{
-    background:
-        linear-gradient(rgba(11,42,68,0.75), rgba(11,42,68,0.75)),
-        url('{{ url_for("static", filename="images/lucas-law-ecELcxmJTk4-unsplash.jpg") }}') center/cover no-repeat;
-    color:white;
-    padding:90px 20px;
-    text-align:center;
-}
-.page-header h1{ font-size:38px; margin-bottom:10px; }
-.page-header p{ font-size:17px; max-width:800px; margin:auto; line-height:1.7; }
-
-/* CONTENT */
-.content{ max-width:800px; margin:70px auto; padding:0 20px; }
-.section{
+/* FORM BOX */
+.form-box{
+    max-width:700px;
+    margin:80px auto;
     background:white;
     padding:45px;
-    border-radius:14px;
-    box-shadow:0 12px 30px rgba(0,0,0,0.08);
-    margin-bottom:40px;
-}
-.section h2{ color:#0b2a44; margin-bottom:20px; font-size:28px; }
-.section p{ font-size:16px; line-height:1.9; color:#333; }
-
-/* FORM */
-form{
-    display:flex;
-    flex-direction:column;
-}
-form input, form select, form textarea{
-    margin-bottom:15px;
-    padding:12px;
-    border-radius:6px;
-    border:1px solid #ccc;
-    font-size:15px;
-}
-form button{
-    padding:12px;
-    background:#0b2a44;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-size:16px;
-    transition:0.3s;
-}
-form button:hover{ background:#00506b; }
-
-/* SUCCESS MESSAGE */
-.success-msg{
-    background:#d4edda;
-    color:#155724;
-    padding:12px 15px;
-    border-radius:6px;
-    margin-bottom:20px;
-    border:1px solid #c3e6cb;
+    border-radius:20px;
+    box-shadow:0 25px 50px rgba(0,0,0,0.35);
 }
 
-/* FOOTER SAME AS HOME */
-footer{
-    background:#081f33;
-    color:#dce3ea;
+.form-box h1{
     text-align:center;
-    padding:25px;
-    font-size:14px;
+    margin-bottom:10px;
+    color:#003366;
+}
+.form-box p{
+    text-align:center;
+    margin-bottom:35px;
+    color:#555;
 }
 
-/* RESPONSIVE */
-@media(max-width:768px){ 
-    .page-header h1{font-size:28px;} 
-    .section{padding:30px;} 
+label{
+    font-weight:600;
+    display:block;
+    margin-bottom:6px;
+}
+input, select, textarea{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    margin-bottom:22px;
+    font-family:'Poppins',sans-serif;
+}
+textarea{resize:none;}
+
+button{
+    width:100%;
+    background:linear-gradient(135deg,#007bff,#00d4ff);
+    color:white;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+button:hover{opacity:0.9;}
+
+footer{
+    color:white;
+    text-align:center;
+    margin-top:60px;
+    padding-bottom:30px;
+    opacity:0.8;
+}
+
+@media(max-width:768px){
+    .form-box{margin:40px 15px;}
 }
 </style>
 </head>
@@ -126,52 +102,55 @@ footer{
 
 <!-- NAVBAR -->
 <nav>
-    <div class="navbar">
+    <div class="logo">Pandav College</div>
+    <div>
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/departments">Departments</a>
         <a href="/admission">Admission</a>
         <a href="/contact">Contact</a>
-        <a href="/chat">Help Desk</a>
     </div>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-    <h1>Admission Enquiry</h1>
-    <p>Fill out the form below to start your admission process at Pandav College of Polytechnic. Our team will contact you shortly.</p>
+<!-- FORM -->
+<div class="form-box">
+<h1>Diploma Admission Form</h1>
+<p>Apply for Polytechnic Admission – Academic Year 2026</p>
+
+<form method="POST">
+
+<label>Full Name</label>
+<input type="text" name="name" placeholder="Enter your full name" required>
+
+<label>Mobile Number</label>
+<input type="tel" name="mobile" placeholder="Enter mobile number" required>
+
+<label>Email Address</label>
+<input type="email" name="email" placeholder="Enter email address">
+
+<label>12th / 10th Percentage</label>
+<input type="text" name="percentage" placeholder="Enter percentage" required>
+
+<label>Select Branch</label>
+<select name="branch" required>
+    <option value="">-- Select Polytechnic Branch --</option>
+    <option value="Computer Science Engineering">Computer Science Engineering</option>
+    <option value="Mechanical Engineering">Mechanical Engineering</option>
+    <option value="Civil Engineering">Civil Engineering</option>
+    <option value="Electrical Engineering">Electrical Engineering</option>
+    <option value="Electronics Engineering">Electronics Engineering</option>
+</select>
+
+<label>Address</label>
+<textarea name="address" rows="3" placeholder="Enter full address"></textarea>
+
+<button type="submit">Submit Admission Form</button>
+
+</form>
 </div>
 
-<!-- CONTENT -->
-<div class="content">
-    <div class="section">
-        <h2>Admission Form</h2>
-
-        {% if msg %}
-        <div class="success-msg">{{ msg }}</div>
-        {% endif %}
-
-        <form method="POST" action="/admission">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="text" name="phone" placeholder="Phone Number" required>
-            <select name="branch" required>
-                <option value="">Select Branch</option>
-                <option value="CSE">Computer Science & Engineering</option>
-                <option value="IT">Information Technology</option>
-                <option value="Mechanical">Mechanical Engineering</option>
-                <option value="Civil">Civil Engineering</option>
-                <option value="Electrical">Electrical Engineering</option>
-            </select>
-            <textarea name="message" placeholder="Any message or questions..." rows="5"></textarea>
-            <button type="submit">Submit Enquiry</button>
-        </form>
-    </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-    © 2026 Pandav College of Polytechnic | All Rights Reserved
+© 2026 Pandav College of Polytechnic • Admission Cell
 </footer>
 
 </body>
