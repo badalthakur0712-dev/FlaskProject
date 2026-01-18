@@ -38,19 +38,11 @@ def init_db():
             name TEXT,
             email TEXT,
             phone TEXT,
-            branch TEXT
+            branch TEXT,
+            percentage TEXT,
+            address TEXT
         )
     """)
-    
-    # Add missing columns if not exist
-    try:
-        c.execute("ALTER TABLE admission ADD COLUMN percentage TEXT")
-    except sqlite3.OperationalError:
-        pass
-    try:
-        c.execute("ALTER TABLE admission ADD COLUMN address TEXT")
-    except sqlite3.OperationalError:
-        pass
 
     # FAQ table
     c.execute("""
@@ -73,60 +65,46 @@ ADMIN_PASSWORD = "admin123"
 # ================= CHATBOT FAQ =================
 faq_answers = {
     "What is Pandav College of Polytechnic?":
-    "Thank you for asking 😊 Pandav College of Polytechnic is an AICTE-approved institute that offers quality diploma engineering education with a strong focus on discipline, practical learning, and career development.",
+        "Thank you for asking 😊 Pandav College of Polytechnic is an AICTE-approved institute that offers quality diploma engineering education with a strong focus on discipline, practical learning, and career development.",
 
     "Which diploma engineering branches are available?":
-    "Thank you for your interest 😊 Our college offers diploma programs in Computer Engineering, Mechanical Engineering, Civil Engineering, Electrical Engineering, and Electronics Engineering.",
+        "Thank you for your interest 😊 Our college offers diploma programs in Computer Engineering, Mechanical Engineering, Civil Engineering, Electrical Engineering, and Electronics Engineering.",
 
     "What is the duration of diploma courses?":
-    "Thank you for asking 😊 All diploma engineering courses have a duration of 3 years, divided into 6 semesters.",
+        "Thank you for asking 😊 All diploma engineering courses have a duration of 3 years, divided into 6 semesters.",
 
     "What is the admission process?":
-    "Thank you for asking 😊 You can apply for admission by filling out the admission enquiry form available on our website or by visiting the college campus. Our admission team will guide you through each step.",
+        "Thank you for asking 😊 You can apply for admission by filling out the admission enquiry form available on our website or by visiting the college campus. Our admission team will guide you through each step.",
 
     "Is admission open for 2026?":
-    "Thank you for asking 😊 Yes, admissions for the academic year 2026 are currently open. We recommend applying early as seats are limited.",
+        "Thank you for asking 😊 Yes, admissions for the academic year 2026 are currently open. We recommend applying early as seats are limited.",
 
     "What is the fee structure?":
-    "Thank you for your question 😊 The annual diploma fees range from ₹60,000 to ₹80,000 depending on the chosen engineering branch.",
-
-    "Tell me about Computer Engineering.":
-    "Thank you for asking 😊 Computer Engineering focuses on programming, software development, web technologies, databases, and basic artificial intelligence concepts. The course duration is 3 years with 60 seats available.",
-
-    "Tell me about Mechanical Engineering.":
-    "Thank you for your interest 😊 Mechanical Engineering covers subjects such as machines, manufacturing processes, CAD design, thermodynamics, and robotics. The course duration is 3 years.",
-
-    "Tell me about Civil Engineering.":
-    "Thank you for asking 😊 Civil Engineering focuses on construction technology, surveying, structural design, and infrastructure development. It is a 3-year diploma program.",
-
-    "Tell me about Electrical Engineering.":
-    "Thank you for your interest 😊 Electrical Engineering deals with power systems, electrical machines, wiring systems, and industrial automation. The program duration is 3 years.",
-
-    "Tell me about Electronics Engineering.":
-    "Thank you for asking 😊 Electronics Engineering focuses on electronic circuits, embedded systems, microcontrollers, and communication systems, preparing students for modern industry needs.",
+        "Thank you for your question 😊 The annual diploma fees range from ₹60,000 to ₹80,000 depending on the chosen engineering branch.",
 
     "Do you provide placement assistance?":
-    "Thank you for asking 😊 Yes, we provide placement assistance to final-year students through training programs, industry interactions, and campus interview support.",
+        "Thank you for asking 😊 Yes, we provide placement assistance to final-year students through training programs, industry interactions, and campus interview support.",
 
     "Is hostel facility available?":
-    "Thank you for your question 😊 For detailed information about hostel facilities, we kindly request you to contact the college administration directly.",
+        "Thank you for your question 😊 For detailed information about hostel facilities, we kindly request you to contact the college administration directly.",
 
     "Is transport facility available?":
-    "Thank you for asking 😊 Transport facility details can be obtained from the college office during working hours.",
+        "Thank you for asking 😊 Transport facility details can be obtained from the college office during working hours.",
 
     "Where can I check the syllabus?":
-    "Thank you for asking 😊 You can check the official syllabus by visiting Student Corner → Syllabus, which redirects to the MSBTE curriculum website.",
+        "Thank you for asking 😊 You can check the official syllabus by visiting Student Corner → Syllabus, which redirects to the MSBTE curriculum website.",
 
     "Where can I check the time table?":
-    "Thank you for asking 😊 The latest class time table is available on our website under Student Corner → Time Table.",
+        "Thank you for asking 😊 The latest class time table is available on our website under Student Corner → Time Table.",
 
     "What are the college office hours?":
-    "Thank you for asking 😊 The college office is open from 9:00 AM to 5:00 PM, Monday to Friday.",
+        "Thank you for asking 😊 The college office is open from 9:00 AM to 5:00 PM, Monday to Friday.",
 
     "How can I contact the college?":
-    "Thank you for reaching out 😊 You can contact us through the Contact page on our website or visit the college campus during office hours.",
+        "Thank you for reaching out 😊 You can contact us through the Contact page on our website or visit the college campus during office hours.",
 
-    "Tell me about the faculty": """
+    "Tell me about the faculty":
+        """
 Here is detailed information about our experienced faculty:
 
 1️⃣ <b>Kajal Mam</b>  
@@ -191,6 +169,7 @@ def student_timetable():
 def student_timetable_branch(branch):
     return render_template("timetable.html")
 
+# ================= ADMISSION =================
 @app.route("/admission", methods=["GET", "POST"])
 def admission():
     msg = ""
@@ -213,6 +192,7 @@ def admission():
         msg = "Thank you 😊 Your admission enquiry has been submitted successfully."
     return render_template("admission.html", msg=msg)
 
+# ================= CONTACT =================
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     msg = ""
@@ -232,6 +212,7 @@ def contact():
         msg = "Thank you 😊 Your message has been sent successfully."
     return render_template("contact.html", msg=msg)
 
+# ================= CHAT =================
 @app.route("/chat")
 def chat():
     return render_template("chat.html", faq=faq_answers)
@@ -250,6 +231,7 @@ def get_answer():
     conn.close()
     return jsonify({"answer": answer})
 
+# ================= ADMIN LOGIN =================
 @app.route("/admin-login", methods=["GET", "POST"])
 def admin_login():
     error = ""
@@ -263,6 +245,7 @@ def admin_login():
             error = "Invalid username or password"
     return render_template("admin_login.html", error=error)
 
+# ================= ADMIN PANEL =================
 @app.route("/admin-panel")
 def admin_panel():
     if not session.get("admin_logged_in"):
@@ -280,6 +263,7 @@ def admin_panel():
     conn.close()
     return render_template("admin.html", contacts=contacts, chats=chats, admissions=admissions, faqs=faqs)
 
+# ================= ADD FAQ =================
 @app.route("/admin-add-faq", methods=["POST"])
 def admin_add_faq():
     if not session.get("admin_logged_in"):
@@ -292,10 +276,11 @@ def admin_add_faq():
         c.execute("INSERT INTO faq(question, answer) VALUES (?, ?)", (question, answer))
         conn.commit()
     except sqlite3.IntegrityError:
-        pass  # question already exists
+        pass
     conn.close()
     return redirect("/admin-panel")
 
+# ================= LOGOUT =================
 @app.route("/logout")
 def logout():
     session.clear()
@@ -303,6 +288,5 @@ def logout():
 
 # ================= RUN =================
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=True)
