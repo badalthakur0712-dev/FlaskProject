@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pandav College of Polytechnic</title>
 
 <style>
@@ -16,25 +17,36 @@ body{
 nav{
     background:#ffffff;
     border-bottom:1px solid #e3e7ec;
-    padding:18px 0;
     position:sticky;
     top:0;
     z-index:1000;
 }
 
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+}
+
+.logo{
+    font-size:18px;
+    font-weight:700;
+    color:#0b2a44;
+}
+
 .navbar{
     display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:40px;
+    gap:30px;
 }
 
 .navbar a{
     text-decoration:none;
     color:#0b2a44;
     font-weight:600;
-    font-size:15px;
-    letter-spacing:0.4px;
+    font-size:14px;
     position:relative;
 }
 
@@ -42,25 +54,26 @@ nav{
     content:"";
     position:absolute;
     left:0;
-    bottom:-6px;
+    bottom:-5px;
     width:0;
     height:2px;
     background:#0b2a44;
     transition:0.3s;
 }
+.navbar a:hover::after{width:100%;}
 
-.navbar a:hover::after{
-    width:100%;
+/* ===== MOBILE MENU ===== */
+.menu-btn{
+    display:none;
+    font-size:24px;
+    cursor:pointer;
 }
 
 /* ================= HERO ================= */
 .hero{
     height:480px;
     background:
-        linear-gradient(
-            rgba(11,42,68,0.65),
-            rgba(11,42,68,0.65)
-        ),
+        linear-gradient(rgba(11,42,68,0.65), rgba(11,42,68,0.65)),
         url('{{ url_for("static", filename="images/lucas-law-ecELcxmJTk4-unsplash.jpg") }}')
         center/cover no-repeat;
     display:flex;
@@ -72,20 +85,17 @@ nav{
 }
 
 .hero h1{
-    font-size:46px;
-    font-weight:700;
-    letter-spacing:1px;
+    font-size:44px;
     margin-bottom:15px;
 }
 
 .hero p{
     font-size:18px;
-    max-width:760px;
+    max-width:750px;
     line-height:1.7;
-    margin:auto;
 }
 
-/* ================= CO-FOUNDER ================= */
+/* ================= COFOUNDER ================= */
 .cofounder{
     background:white;
     padding:80px 20px;
@@ -107,42 +117,19 @@ nav{
     flex-wrap:wrap;
 }
 
-.cofounder-img{
-    flex:1;
-    text-align:center;
-}
-
+.cofounder-img{text-align:center;flex:1;}
 .cofounder-img img{
     width:260px;
     border-radius:14px;
     box-shadow:0 12px 30px rgba(0,0,0,0.2);
 }
 
-.cofounder-text{
-    flex:2;
-}
+.cofounder-text{flex:2;}
+.cofounder-text h3{font-size:26px;color:#0b2a44;margin:0;}
+.cofounder-text span{display:block;margin:8px 0 18px;font-weight:600;color:#555;}
+.cofounder-text p{font-size:16px;line-height:1.9;color:#333;}
 
-.cofounder-text h3{
-    margin:0;
-    font-size:26px;
-    color:#0b2a44;
-}
-
-.cofounder-text span{
-    display:block;
-    margin:6px 0 18px;
-    font-weight:600;
-    color:#555;
-}
-
-.cofounder-text p{
-    font-size:16px;
-    line-height:1.9;
-    color:#333;
-    margin-bottom:16px;
-}
-
-/* ================= HIGHLIGHT STRIP ================= */
+/* ================= HIGHLIGHTS ================= */
 .highlights{
     background:#0b2a44;
     color:white;
@@ -158,19 +145,49 @@ nav{
     text-align:center;
 }
 
-.highlight{
-    padding:20px;
+.highlight h3{font-size:32px;margin-bottom:8px;}
+.highlight p{font-size:15px;opacity:0.9;}
+
+/* ================= FACULTY ================= */
+.faculty{
+    background:#fdfdfd;
+    padding:80px 20px;
 }
 
-.highlight h3{
+.faculty h2{
+    text-align:center;
+    color:#0b2a44;
     font-size:32px;
-    margin-bottom:8px;
+    margin-bottom:50px;
 }
 
-.highlight p{
-    font-size:15px;
-    opacity:0.9;
+.faculty-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
 }
+
+.faculty-card{
+    background:white;
+    border-radius:14px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 12px 30px rgba(0,0,0,0.1);
+}
+
+.faculty-card img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    margin-bottom:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.faculty-card h3{color:#0b2a44;margin-bottom:6px;}
+.faculty-card span{display:block;margin-bottom:12px;font-weight:600;color:#555;}
+.faculty-card p{font-size:14px;line-height:1.7;color:#333;}
 
 /* ================= FOOTER ================= */
 footer{
@@ -183,24 +200,53 @@ footer{
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-    .hero h1{font-size:30px;}
+    .navbar{
+        display:none;
+        flex-direction:column;
+        background:white;
+        position:absolute;
+        top:60px;
+        right:20px;
+        width:200px;
+        border:1px solid #ddd;
+        box-shadow:0 10px 25px rgba(0,0,0,0.15);
+        padding:15px;
+    }
+
+    .navbar.show{display:flex;}
+    .menu-btn{display:block;}
+
+    .hero h1{font-size:28px;}
     .hero p{font-size:16px;}
     .cofounder-box{flex-direction:column;text-align:center;}
+    .faculty-grid{grid-template-columns:1fr;}
 }
 </style>
+
+<script>
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("show");
+}
+</script>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
 <nav>
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/departments">Departments</a>
-        <a href="/admission">Admission</a>
-        <a href="/contact">Contact</a>
-        <a href="/chat">Help Desk</a>
+    <div class="nav-container">
+        <div class="logo">Pandav Polytechnic</div>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <div class="navbar" id="menu">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/departments">Departments</a>
+            <a href="/admission">Admission</a>
+            <a href="/student-corner">Student Corner</a>
+            <a href="/contact">Contact</a>
+            <a href="/chat">Help Desk</a>
+            <a href="/admin-login">Admin Login</a> <!-- Added admin login link -->
+        </div>
     </div>
 </nav>
 
@@ -210,43 +256,24 @@ footer{
         <h1>Pandav College of Polytechnic</h1>
         <p>
             A center of excellence committed to quality technical education,
-            innovation, discipline, and the holistic development of students.
+            innovation, discipline, and holistic student development.
         </p>
     </div>
 </div>
 
-<!-- CO-FOUNDER -->
+<!-- COFOUNDER -->
 <section class="cofounder">
     <h2>Message from the Co-Founder</h2>
-
     <div class="cofounder-box">
         <div class="cofounder-img">
-            <img src="{{ url_for('static', filename='images/cofounder.png') }}" alt="Co-Founder">
+            <img src="{{ url_for('static', filename='images/cofounder.png') }}">
         </div>
-
         <div class="cofounder-text">
             <h3>Shri. Sachin Tagalpallewar</h3>
             <span>Co-Founder | Pandav College of Polytechnic</span>
-
-            <p>
-                Pandav College of Polytechnic was established with a clear vision —
-                to provide high-quality technical education that empowers students
-                with knowledge, skills, and ethical values.
-            </p>
-
-            <p>
-                Our focus is not only on academics, but also on discipline,
-                innovation, industry readiness, and character building.
-                We believe every student has the potential to become a skilled
-                professional and a responsible citizen.
-            </p>
-
-            <p>
-                With experienced faculty, modern infrastructure, and a
-                student-centric approach, Pandav College continuously strives
-                to shape future engineers who can confidently meet real-world
-                challenges.
-            </p>
+            <p>Pandav College was founded to provide industry-ready technical education with strong ethics.</p>
+            <p>We focus on discipline, innovation, and practical skills to shape future engineers.</p>
+            <p>Our mission is to empower students to confidently face real-world challenges.</p>
         </div>
     </div>
 </section>
@@ -254,21 +281,34 @@ footer{
 <!-- HIGHLIGHTS -->
 <section class="highlights">
     <div class="highlight-grid">
-        <div class="highlight">
-            <h3>5+</h3>
-            <p>Diploma Engineering Branches</p>
+        <div class="highlight"><h3>5+</h3><p>Engineering Branches</p></div>
+        <div class="highlight"><h3>Expert</h3><p>Faculty Members</p></div>
+        <div class="highlight"><h3>Modern</h3><p>Infrastructure</p></div>
+        <div class="highlight"><h3>Career</h3><p>Placement Support</p></div>
+    </div>
+</section>
+
+<!-- FACULTY -->
+<section class="faculty">
+    <h2>Meet Our Faculty</h2>
+    <div class="faculty-grid">
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/kajal.png') }}">
+            <h3>Kajal Mam</h3>
+            <span>Computer Science | Age 24</span>
+            <p>Diploma in Polytechnic. Teaches Programming, Web Development, Database Management, Basic AI. Known for interactive and practical teaching, coding exercises, and real-world projects.</p>
         </div>
-        <div class="highlight">
-            <h3>Experienced</h3>
-            <p>Qualified Faculty Members</p>
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/ritika.png') }}">
+            <h3>Ritika Dorkhande Mam</h3>
+            <span>Software Technology | Age 21</span>
+            <p>Degree in Computer Engineering. Focuses on software development, operating systems, networking, and project management. Encourages hands-on projects and innovative solutions.</p>
         </div>
-        <div class="highlight">
-            <h3>Industry</h3>
-            <p>Skill-Oriented Curriculum</p>
-        </div>
-        <div class="highlight">
-            <h3>Career</h3>
-            <p>Placement Guidance & Support</p>
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/shumbhangi.png') }}">
+            <h3>Shumbhangi Mam</h3>
+            <span>NIS | Age 24</span>
+            <p>Specialized in Security & Networking. Teaches Cybersecurity, Ethical Hacking, Network Security, and Data Protection. Focuses on practical labs and real-time simulations for students.</p>
         </div>
     </div>
 </section>

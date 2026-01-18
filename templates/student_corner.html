@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Corner - Pandav College</title>
+
+<style>
+body{
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:#f4f7fb;
+}
+
+/* NAVBAR */
+nav{
+    background:#ffffff;
+    border-bottom:1px solid #e3e7ec;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+}
+
+.logo{
+    font-size:18px;
+    font-weight:700;
+    color:#0b2a44;
+}
+
+.navbar{
+    display:flex;
+    gap:25px;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:#0b2a44;
+    font-weight:600;
+    font-size:14px;
+}
+
+.menu-btn{
+    display:none;
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* CONTENT */
+.container{
+    max-width:1000px;
+    margin:50px auto;
+    background:white;
+    padding:40px 30px;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.cards{
+    display:flex;
+    gap:40px;
+    justify-content:center;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:#0b2a44;
+    color:white;
+    width:260px;
+    padding:30px;
+    border-radius:14px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.card:hover{
+    background:#081f33;
+    transform:translateY(-6px);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .navbar{
+        display:none;
+        flex-direction:column;
+        background:white;
+        position:absolute;
+        top:60px;
+        right:20px;
+        width:200px;
+        border:1px solid #ddd;
+        box-shadow:0 10px 25px rgba(0,0,0,0.15);
+        padding:15px;
+    }
+    .navbar.show{display:flex;}
+    .menu-btn{display:block;}
+}
+</style>
+
+<script>
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("show");
+}
+</script>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">Pandav Polytechnic</div>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <div class="navbar" id="menu">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/departments">Departments</a>
+            <a href="/admission">Admission</a>
+            <a href="/student-corner">Student Corner</a>
+            <a href="/contact">Contact</a>
+            <a href="/chat">Help Desk</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Student Corner</h1>
+    <p>Access important academic resources</p>
+
+    <div class="cards">
+        <a class="card" href="https://econtent.msbte.edu.in/curriculum_search/" target="_blank">
+            <h2>Syllabus</h2>
+            <p>Official MSBTE curriculum</p>
+        </a>
+
+        <a class="card" href="/student-corner/timetable/computer">
+            <h2>Time Table</h2>
+            <p>Latest class schedule</p>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

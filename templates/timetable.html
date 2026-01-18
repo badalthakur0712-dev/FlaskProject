@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Table - Pandav College</title>
+
+<style>
+body{
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:#f4f7fb;
+}
+
+/* NAVBAR */
+nav{
+    background:#ffffff;
+    border-bottom:1px solid #e3e7ec;
+    position:sticky;
+    top:0;
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+}
+
+.logo{
+    font-weight:700;
+    color:#0b2a44;
+    font-size:18px;
+}
+
+.navbar{
+    display:flex;
+    gap:25px;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:#0b2a44;
+    font-weight:600;
+    font-size:14px;
+}
+
+/* CONTENT */
+.container{
+    max-width:1000px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.container h1{
+    color:#0b2a44;
+}
+
+.timetable-img{
+    width:100%;
+    max-width:900px;
+    margin-top:30px;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* MOBILE VIEW */
+@media(max-width:768px){
+    .navbar{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+    .container{
+        margin:20px;
+        padding:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">Pandav Polytechnic</div>
+        <div class="navbar">
+            <a href="/">Home</a>
+            <a href="/student-corner">Student Corner</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Class Time Table</h1>
+    <p>Below is the latest class timetable for students.</p>
+
+    <img src="{{ url_for('static', filename='images/timetable.JPG') }}"
+         alt="Time Table"
+         class="timetable-img">
+</div>
+
+</body>
+</html>

@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- 🔴 REQUIRED FOR MOBILE UI -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Departments | Pandav College of Polytechnic</title>
 
 <style>
@@ -15,54 +19,59 @@ body{
     color:#333;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 nav{
     background:rgba(0,0,0,0.45);
     backdrop-filter: blur(10px);
-    padding:16px 40px;
+    padding:14px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     position:sticky;
     top:0;
     z-index:10;
+    flex-wrap:wrap;
 }
 nav .logo{
     color:#fff;
-    font-size:24px;
+    font-size:22px;
     font-weight:700;
+}
+nav .links{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
 }
 nav a{
     color:#fff;
     text-decoration:none;
-    margin-left:22px;
     font-weight:500;
+    font-size:14px;
 }
-nav a:hover{opacity:0.8;}
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{
-    padding:90px 20px;
+    padding:80px 20px;
     text-align:center;
     color:white;
 }
 .hero h1{
-    font-size:46px;
-    margin-bottom:15px;
+    font-size:44px;
+    margin-bottom:12px;
 }
 .hero p{
     font-size:18px;
     opacity:0.9;
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 .container{
     max-width:1100px;
     margin:60px auto;
     padding:0 20px;
 }
 
-/* DEPT CARD */
+/* ================= DEPT CARD ================= */
 .dept-card{
     background:rgba(255,255,255,0.96);
     border-radius:18px;
@@ -71,13 +80,11 @@ nav a:hover{opacity:0.8;}
     box-shadow:0 20px 40px rgba(0,0,0,0.25);
     transition:transform .3s;
 }
-.dept-card:hover{
-    transform:translateY(-4px);
-}
+.dept-card:hover{ transform:translateY(-4px); }
 
 /* HEADER */
 .dept-header{
-    padding:26px 30px;
+    padding:22px 24px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -85,7 +92,7 @@ nav a:hover{opacity:0.8;}
 }
 .dept-header h2{
     margin:0;
-    font-size:22px;
+    font-size:21px;
     color:#003366;
 }
 .dept-header span{
@@ -101,19 +108,21 @@ nav a:hover{opacity:0.8;}
     background:#f8fbff;
 }
 .dept-inner{
-    padding:30px;
+    padding:26px;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
+    gap:22px;
 }
+
+/* INFO */
 .info-box{
     background:white;
     border-radius:14px;
-    padding:20px;
+    padding:18px;
     box-shadow:0 10px 20px rgba(0,0,0,0.1);
 }
 .info-box h4{
-    margin-bottom:8px;
+    margin-bottom:6px;
     color:#007bff;
 }
 .info-box p{
@@ -124,7 +133,7 @@ nav a:hover{opacity:0.8;}
 
 /* FEES */
 .fees{
-    font-size:26px;
+    font-size:24px;
     font-weight:700;
     color:#27ae60;
 }
@@ -136,26 +145,49 @@ nav a:hover{opacity:0.8;}
 }
 .apply-btn a{
     background:linear-gradient(135deg,#007bff,#00d4ff);
-    padding:14px 30px;
+    padding:14px 28px;
     color:white;
     border-radius:30px;
     text-decoration:none;
     font-weight:600;
     display:inline-block;
 }
-.apply-btn a:hover{opacity:0.9;}
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer{
     background:rgba(0,0,0,0.4);
     color:white;
     text-align:center;
-    padding:25px;
+    padding:22px;
     margin-top:80px;
+    font-size:14px;
 }
 
+/* ================= MOBILE UI ================= */
 @media(max-width:768px){
-    .hero h1{font-size:32px;}
+
+    nav{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav .links{
+        width:100%;
+        justify-content:space-around;
+        margin-top:10px;
+    }
+
+    .hero h1{ font-size:30px; }
+    .hero p{ font-size:15px; }
+
+    .dept-header h2{ font-size:18px; }
+
+    .dept-inner{
+        grid-template-columns:1fr;
+        padding:20px;
+    }
+
+    .fees{ font-size:22px; }
 }
 </style>
 </head>
@@ -165,7 +197,7 @@ footer{
 <!-- NAV -->
 <nav>
     <div class="logo">Pandav College</div>
-    <div>
+    <div class="links">
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/departments">Departments</a>

@@ -1,138 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Pandav College</title>
-
-<style>
-body{
-    margin:0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background:#f5f7fa;
-    color:#222;
-}
-
-/* ===== NAVBAR ===== */
-nav{
-    background:#ffffff;
-    border-bottom:1px solid #e2e6ea;
-    padding:18px 0;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.navbar{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:42px;
-}
-
-/* NAV LINKS */
-.navbar a{
-    color:#0a2a43;
-    text-decoration:none;
-    font-size:15.5px;
-    font-weight:600;
-    letter-spacing:0.4px;
-    padding:4px 0;
-    position:relative;
-    transition:0.25s ease;
-}
-
-/* SUBTLE UNDERLINE */
-.navbar a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0;
-    height:2px;
-    background:#0a2a43;
-    transition:0.25s ease;
-}
-
-.navbar a:hover{
-    color:#003d73;
-}
-
-.navbar a:hover::after{
-    width:100%;
-}
-
-/* ===== HERO SECTION ===== */
-.hero{
-    height:420px;
-    background:
-        linear-gradient(
-            rgba(10,42,67,0.55),
-            rgba(10,42,67,0.55)
-        ),
-        url('{{ url_for("static", filename="images/lucas-law-ecELcxmJTk4-unsplash.jpg") }}')
-        center/cover no-repeat;
+<!-- ================= NAVBAR ================= -->
+<nav style="
+    background:#2c3e50;
+    padding:15px 30px;
     display:flex;
     align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:#ffffff;
-}
+    gap:25px;
+    font-family:Arial, Helvetica, sans-serif;
+">
 
-.hero h1{
-    font-size:44px;
-    font-weight:700;
-    margin-bottom:12px;
-    letter-spacing:1px;
-}
+    <a href="/" style="color:white;text-decoration:none;font-weight:bold;">
+        Pandav College
+    </a>
 
-.hero p{
-    font-size:18px;
-    font-weight:400;
-    max-width:700px;
-    margin:auto;
-    line-height:1.6;
-}
+    <a href="/" style="color:white;text-decoration:none;">Home</a>
+    <a href="/about" style="color:white;text-decoration:none;">About</a>
+    <a href="/departments" style="color:white;text-decoration:none;">Departments</a>
+    <a href="/admission" style="color:white;text-decoration:none;">Admission</a>
+    <a href="/contact" style="color:white;text-decoration:none;">Contact</a>
 
-/* RESPONSIVE */
-@media(max-width:768px){
-    .navbar{
-        flex-wrap:wrap;
-        gap:22px;
-    }
-    .hero h1{
-        font-size:30px;
-    }
-    .hero p{
-        font-size:16px;
-    }
-}
-</style>
-</head>
+    <!-- ✅ CHATBOT LINK (RESTORED) -->
+    <a href="/chat" style="color:white;text-decoration:none;">Chatbot</a>
 
-<body>
+    <!-- STUDENT CORNER -->
+    <div style="position:relative;">
+        <a href="#" id="studentCorner" style="color:white;text-decoration:none;">
+            Student Corner ⌄
+        </a>
 
-<!-- ===== NAVBAR ===== -->
-<nav>
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/departments">Departments</a>
-        <a href="/admission">Admission</a>
-        <a href="/contact">Contact</a>
-        <a href="/chat">Help Desk</a>
+        <div id="studentMenu" style="
+            display:none;
+            position:absolute;
+            top:30px;
+            left:0;
+            background:white;
+            min-width:200px;
+            border-radius:6px;
+            box-shadow:0 6px 12px rgba(0,0,0,0.2);
+            z-index:999;
+        ">
+            <a href="https://econtent.msbte.edu.in/curriculum_search/"
+               target="_blank"
+               style="display:block;padding:12px;text-decoration:none;color:#333;">
+                📘 Syllabus
+            </a>
+
+            <a href="/timetable"
+               style="display:block;padding:12px;text-decoration:none;color:#333;">
+                🕒 Time Table
+            </a>
+        </div>
     </div>
 </nav>
 
-<!-- ===== HERO ===== -->
-<div class="hero">
-    <div>
-        <h1>Pandav College of Polytechnic</h1>
-        <p>
-            Committed to academic excellence, professional skills,
-            and ethical values in technical education.
-        </p>
-    </div>
-</div>
+<script>
+    const studentCorner = document.getElementById("studentCorner");
+    const studentMenu = document.getElementById("studentMenu");
 
-</body>
-</html>
+    studentCorner.onmouseover = () => studentMenu.style.display = "block";
+    studentCorner.onmouseout  = () => studentMenu.style.display = "none";
+    studentMenu.onmouseover   = () => studentMenu.style.display = "block";
+    studentMenu.onmouseout    = () => studentMenu.style.display = "none";
+</script>
+<!-- ================= END NAVBAR ================= -->

@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- 🔴 REQUIRED FOR MOBILE UI -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>About Us | Pandav College of Polytechnic</title>
 
 <style>
@@ -27,6 +31,7 @@ nav{
     justify-content:center;
     align-items:center;
     gap:40px;
+    flex-wrap:wrap;
 }
 
 .navbar a{
@@ -36,21 +41,6 @@ nav{
     font-size:15px;
     letter-spacing:0.4px;
     position:relative;
-}
-
-.navbar a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0;
-    height:2px;
-    background:#0b2a44;
-    transition:0.3s;
-}
-
-.navbar a:hover::after{
-    width:100%;
 }
 
 /* ================= PAGE HEADER ================= */
@@ -141,10 +131,42 @@ footer{
     font-size:14px;
 }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){
-    .page-header h1{font-size:28px;}
-    .section{padding:30px;}
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width:768px){
+
+    nav{
+        padding:10px 0;
+    }
+
+    .navbar{
+        flex-direction:column;
+        gap:14px;
+    }
+
+    .page-header{
+        padding:60px 15px;
+    }
+
+    .page-header h1{
+        font-size:26px;
+    }
+
+    .page-header p{
+        font-size:15px;
+    }
+
+    .section{
+        padding:25px;
+    }
+
+    .section h2{
+        font-size:22px;
+    }
+
+    .section p{
+        font-size:14px;
+    }
+
 }
 </style>
 </head>
@@ -180,8 +202,7 @@ footer{
         <p>
             Pandav College of Polytechnic is a premier technical institute
             dedicated to delivering high-quality diploma education in
-            engineering disciplines. The institution focuses on academic
-            excellence, practical learning, and ethical values.
+            engineering disciplines.
         </p>
     </div>
 
@@ -205,27 +226,14 @@ footer{
     </div>
 
     <div class="stats">
-        <div class="stat">
-            <h3>5+</h3>
-            <p>Diploma Branches</p>
-        </div>
-        <div class="stat">
-            <h3>Expert</h3>
-            <p>Faculty Team</p>
-        </div>
-        <div class="stat">
-            <h3>Modern</h3>
-            <p>Infrastructure</p>
-        </div>
-        <div class="stat">
-            <h3>Career</h3>
-            <p>Focused Education</p>
-        </div>
+        <div class="stat"><h3>5+</h3><p>Diploma Branches</p></div>
+        <div class="stat"><h3>Expert</h3><p>Faculty Team</p></div>
+        <div class="stat"><h3>Modern</h3><p>Infrastructure</p></div>
+        <div class="stat"><h3>Career</h3><p>Focused Education</p></div>
     </div>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
     © 2026 Pandav College of Polytechnic | All Rights Reserved
 </footer>

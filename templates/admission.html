@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- 🔴 REQUIRED FOR MOBILE UI -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Admission Form | Pandav College of Polytechnic</title>
 
 <style>
@@ -13,29 +17,40 @@ body{
     background:linear-gradient(135deg,#141e30,#243b55);
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 nav{
     background:rgba(0,0,0,0.45);
     backdrop-filter: blur(10px);
-    padding:16px 40px;
+    padding:14px 20px;
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
-nav .logo{
+
+.logo{
     color:#fff;
-    font-size:24px;
+    font-size:22px;
     font-weight:700;
 }
-nav a{
+
+.nav-links{
+    display:flex;
+    gap:18px;
+}
+
+.nav-links a{
     color:#fff;
     text-decoration:none;
-    margin-left:22px;
     font-weight:500;
+    font-size:14px;
 }
-nav a:hover{opacity:0.8;}
 
-/* FORM BOX */
+/* ================= FORM BOX ================= */
 .form-box{
     max-width:700px;
     margin:80px auto;
@@ -92,8 +107,28 @@ footer{
     opacity:0.8;
 }
 
+/* ================= MOBILE UI ================= */
 @media(max-width:768px){
-    .form-box{margin:40px 15px;}
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        margin-top:10px;
+        gap:12px;
+    }
+
+    .form-box{
+        margin:40px 15px;
+        padding:30px 20px;
+    }
+
+    .form-box h1{
+        font-size:22px;
+    }
+
+    button{
+        font-size:15px;
+    }
 }
 </style>
 </head>
@@ -102,13 +137,15 @@ footer{
 
 <!-- NAVBAR -->
 <nav>
-    <div class="logo">Pandav College</div>
-    <div>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/departments">Departments</a>
-        <a href="/admission">Admission</a>
-        <a href="/contact">Contact</a>
+    <div class="nav-container">
+        <div class="logo">Pandav College</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/departments">Departments</a>
+            <a href="/admission">Admission</a>
+            <a href="/contact">Contact</a>
+        </div>
     </div>
 </nav>
 
@@ -123,7 +160,7 @@ footer{
 <input type="text" name="name" placeholder="Enter your full name" required>
 
 <label>Mobile Number</label>
-<input type="tel" name="mobile" placeholder="Enter mobile number" required>
+<input type="tel" name="phone" placeholder="Enter mobile number" required>
 
 <label>Email Address</label>
 <input type="email" name="email" placeholder="Enter email address">
@@ -134,11 +171,11 @@ footer{
 <label>Select Branch</label>
 <select name="branch" required>
     <option value="">-- Select Polytechnic Branch --</option>
-    <option value="Computer Science Engineering">Computer Science Engineering</option>
-    <option value="Mechanical Engineering">Mechanical Engineering</option>
-    <option value="Civil Engineering">Civil Engineering</option>
-    <option value="Electrical Engineering">Electrical Engineering</option>
-    <option value="Electronics Engineering">Electronics Engineering</option>
+    <option>Computer Engineering</option>
+    <option>Mechanical Engineering</option>
+    <option>Civil Engineering</option>
+    <option>Electrical Engineering</option>
+    <option>Electronics Engineering</option>
 </select>
 
 <label>Address</label>
